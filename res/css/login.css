@@ -1,0 +1,55 @@
+body {
+    background-color: royalblue;
+}
+
+.flex-containeer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flex-containeer>div {
+    padding: 20px;
+    margin-top: 150px;
+    background-color: ghostwhite;
+    display: block;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    width: 500px;
+}
+
+div img {
+    height: 100px;
+    float: left;
+    width: 100px;
+    text-align: left;
+}
+
+div .helper {
+    float: right;
+    width: 100px;
+    text-align: right;
+}
+
+div p {
+    font-size: 18px;
+}
+
+input {
+    width: 200px;
+    padding: 10px 18px;
+    margin: 8px 10px;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+#button {
+    background-color: #5f7de5;
+    width: 100px;
+    border-radius: 5px;
+}
+
+#button:hover {
+    background-color: royalblue;
+}

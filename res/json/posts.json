@@ -1,0 +1,71 @@
+[{
+        "profilePicture": "res/images/Account.png",
+        "postPicture": "res/images/penguins.jpg",
+        "likePicture": "res/images/Like.png",
+        "text": "GUYS! I saw 3 penguins today! BEST DAY OF MY LIFE!",
+        "date": "Sep 25, 2021 13.34"
+    },
+    {
+        "profilePicture": "res/images/Account2.png",
+        "postPicture": "",
+        "likePicture": "res/images/Like.png",
+        "text": "Aww ❤❤❤ Where did you see them?",
+        "date": "Sep 25, 2021 13.40"
+    },
+    {
+        "profilePicture": "res/images/Account.png",
+        "postPicture": "res/images/parade.jpg",
+        "likePicture": "res/images/Like.png",
+        "text": "I saw them on a Parade... PARADE OF THE PENGUINS!!!",
+        "date": "Sep 25, 2021 13.44"
+    },
+    {
+        "profilePicture": "res/images/fox.jpg",
+        "postPicture": "",
+        "likePicture": "res/images/Like.png",
+        "text": "I wish that I were there \uD83D\uDE2D\uD83D\uDE2D\uD83D\uDE2D",
+        "date": "Sep 25, 2021 13.46"
+    },
+    {
+        "profilePicture": "res/images/Account.png",
+        "postPicture": "res/images/proud.jpg",
+        "likePicture": "res/images/Like.png",
+        "text": "They are really incredible creatures indeed.",
+        "date": "Oct 22, 2021 15.46"
+    },
+    {
+        "profilePicture": "res/images/Account2.png",
+        "postPicture": "",
+        "likePicture": "res/images/Like.png",
+        "text": "Long time no seen mate. How have you been?",
+        "date": "Oct 22, 2021 15.54"
+    },
+    {
+        "profilePicture": "res/images/Account.png",
+        "postPicture": "res/images/sliding.jpg",
+        "likePicture": "res/images/Like.png",
+        "text": "You know... Busy as a penguin. Just wiggling here, sliding there. How about you?",
+        "date": "Oct 22, 2021 16.04"
+    },
+    {
+        "profilePicture": "res/images/Account2.png",
+        "postPicture": "res/images/haircut.jpg",
+        "likePicture": "res/images/Like.png",
+        "text": "Same old. My wife said that I need a haircut, but I'm not so sure",
+        "date": "Oct 22, 2021 16.10"
+    },
+    {
+        "profilePicture": "res/images/fox.jpg",
+        "postPicture": "",
+        "likePicture": "res/images/Like.png",
+        "text": "I think it looks lovely \uD83D\uDE0D",
+        "date": "Oct 22, 2021 16.13"
+    },
+    {
+        "profilePicture": "res/images/giraffe.jpg",
+        "postPicture": "",
+        "likePicture": "res/images/Like.png",
+        "text": "Yeah, you are a real heartbreaker \uD83D\uDE02",
+        "date": "Oct 22, 2021 16.18"
+    }
+]
