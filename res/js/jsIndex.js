@@ -39,9 +39,9 @@ function dropdownMenu() {
 
 
 window.onclick = function(event) {
-    const addDuck = document.getElementById('addDuck');
-    const text = document.createTextNode(' Duck');
-    addDuck.appendChild(text);
+    const p = document.getElementById('addDuck');
+    const textNode = document.createTextNode(' Duck');
+    p.appendChild(textNode);
     if (!event.target.matches(".dropbtn")) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         let i;
