@@ -37,7 +37,11 @@ function dropdownMenu() {
     document.getElementById("ddc").classList.toggle("show");
 }
 
+
 window.onclick = function(event) {
+    const addDuck = document.getElementById('addDuck');
+    const text = document.createTextNode(' Duck');
+    addDuck.appendChild(text);
     if (!event.target.matches(".dropbtn")) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         let i;
