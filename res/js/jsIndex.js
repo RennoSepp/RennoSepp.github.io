@@ -40,15 +40,8 @@ function dropdownMenu() {
 
 window.onclick = function(event) {
     const p = document.getElementById('addDuck');
-
-    // ✅ Append text to paragraph
-    p.insertAdjacentText('beforeend', ' Duck');
-
-    // ✅ Append HTML to paragraph
-    p.insertAdjacentHTML(
-    'beforeend',
-    '<span style="background-color: yellow">, Four</span>',
-    );
+    const textNode = document.createTextNode(' Duck');
+    p.appendChild(textNode);
 
     if (!event.target.matches(".dropbtn")) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
