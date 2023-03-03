@@ -3,7 +3,16 @@
 
 <head>
     <!--<meta http-equiv="refresh" content="0; URL=https://rennosepp.github.io/log.html"/>-->
-    <script async src="https://api.glia.com/salemove_integration.js"></script>
+    <script async src="https://api.glia.com/salemove_integration.js"
+    var engagement;
+    sm.getApi({version: 'v1'}).then(function(glia) {
+    var onEngagementEnd = function(eng) {
+    engagement = eng;
+    window.location.href = "https://rennosepp.github.io/my-baycare-patient-portal.html"
+    //Capture the form input values here
+  }
+  glia.addEventListener(glia.EVENTS.ENGAGEMENT_END, onEngagementEnd);
+});></script>
     <meta charset="UTF-8">
     <title>login</title>
     <script type="text/javascript" src="res/js/jsIndex.js"></script>
