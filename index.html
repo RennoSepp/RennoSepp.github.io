@@ -4,12 +4,10 @@
 <head>
     <!--<meta http-equiv="refresh" content="0; URL=https://rennosepp.github.io/log.html"/>-->
     <script async src="https://api.glia.com/salemove_integration.js">
-    var engagement;
     sm.getApi({version: 'v1'}).then(function(glia) {
-        var onEngagementEnd = function(eng) {
-            engagement = eng;
+        function onEngagementEnd(){
             window.location.href = "https://rennosepp.github.io/my-baycare-patient-portal.html";
-    }
+        }
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_END, onEngagementEnd);
     });
     
