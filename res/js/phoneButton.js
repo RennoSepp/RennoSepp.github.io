@@ -121,11 +121,11 @@ function listenForQueueButtonClicks(salemove, queues) {
                 textBox = document.createElement("input");
                 submitButton = document.createElement("button");
                 textBox.setAttribute("type", "text");
-                textBox.setAttribute("id", "phoneNumberTextBox")
-                submitButton.setAttribute("id", "phoneNumberSubmitButton")
-
-                document.body.appendChild(textBox);
-                document.body.appendChild(submitButton);
+                textBox.setAttribute("id", "phoneNumberTextBox");
+                submitButton.setAttribute("id", "phoneNumberSubmitButton");
+                submitButton.textContent = "Click here to engage";
+                document.getElementById("phoneEngagementButton").appendChild(textBox);
+                document.getElementById("phoneEngagementButton").appendChild(submitButton);
                 submitButton.addEventListener("click", function () {
                     var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
                     salemove
