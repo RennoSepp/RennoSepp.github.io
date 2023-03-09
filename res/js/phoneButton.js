@@ -123,10 +123,10 @@ function listenForQueueButtonClicks(salemove, queues) {
                 textBox.setAttribute("type", "text");
                 textBox.setAttribute("id", "phoneNumberTextBox")
                 submitButton.setAttribute("id", "phoneNumberSubmitButton")
-                
+
                 document.body.appendChild(textBox);
                 document.body.appendChild(submitButton);
-                submitButton.addEventListener("click", callPhoneNumber(buttonMedium,queueId));
+                submitButton.addEventListener("click", callPhoneNumber(buttonMedium, queueId));
             } else {
                 salemove
                     .queueForEngagement(buttonMedium, { queueId: queueId })
@@ -136,9 +136,10 @@ function listenForQueueButtonClicks(salemove, queues) {
     });
 }
 
-function callPhoneNumber(buttonMedium, queueId){
+function callPhoneNumber(buttonMedium, queueId) {
     var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
-    salemove.queueForEngagement(buttonMedium, {
+    salemove
+        .queueForEngagement(buttonMedium, {
             queueId: queueId,
             phoneNumber: visitorPhoneNumber
         }).catch(showFailedToQueueView);
