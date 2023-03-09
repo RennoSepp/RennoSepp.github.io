@@ -118,18 +118,15 @@ function listenForQueueButtonClicks(salemove, queues) {
         // Queue upon button click
         mediaButton.addEventListener('click', function () {
             if (buttonMedium === 'phone') {
-                input = document.createElement("input");
-                input.setAttribute("type", "text");
-                document.body.appendChild(input);
-                // Read the visitor's phone number from a separate UI element or from
-                // another information source.
-                var visitorPhoneNumber = '+37256943333';
-                salemove
-                    .queueForEngagement(buttonMedium, {
-                        queueId: queueId,
-                        phoneNumber: visitorPhoneNumber
-                    })
-                    .catch(showFailedToQueueView);
+                textBox = document.createElement("input");
+                submitButton = document.createElement("button");
+                textBox.setAttribute("type", "text");
+                textBox.setAttribute("id", "phoneNumberTextBox")
+                submitButton.setAttribute("id", "phoneNumberSubmitButton")
+                
+                document.body.appendChild(textBox);
+                document.body.appendChild(submitButton);
+                submitButton.addEventListener("click", callPhoneNumber);
             } else {
                 salemove
                     .queueForEngagement(buttonMedium, { queueId: queueId })
@@ -138,6 +135,15 @@ function listenForQueueButtonClicks(salemove, queues) {
         });
     });
 }
+
+function callPhoneNumber(){
+    var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
+    salemove.queueForEngagement(buttonMedium, {
+            queueId: queueId,
+            phoneNumber: visitorPhoneNumber
+        }).catch(showFailedToQueueView);
+}
+
 
 // Bind click on cancel button with QueueTicket cancellation
 function listenForCancel() {
