@@ -138,6 +138,7 @@ function listenForQueueButtonClicks(salemove, queues) {
 
 function callPhoneNumber(){
     var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
+    var buttonMedium = 'phone'
     salemove.queueForEngagement(buttonMedium, {
             queueId: queueId,
             phoneNumber: visitorPhoneNumber
