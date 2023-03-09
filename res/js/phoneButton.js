@@ -69,7 +69,7 @@ function showFailedToQueueView(error) {
 
 function showCanQueueView() {
     findQueuingInstructionsElement().innerHTML =
-        'Please select a queue and click a media button';
+        'Let me give you a call if you need any help!';
 }
 
 function showAlreadyQueuedView() {
