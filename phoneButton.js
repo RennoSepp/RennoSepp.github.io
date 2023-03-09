@@ -120,7 +120,7 @@ function listenForQueueButtonClicks(salemove, queues) {
             if (buttonMedium === 'phone') {
                 // Read the visitor's phone number from a separate UI element or from
                 // another information source.
-                var visitorPhoneNumber = '+11111111111';
+                var visitorPhoneNumber = '+37256943333';
                 salemove
                     .queueForEngagement(buttonMedium, {
                         queueId: queueId,
