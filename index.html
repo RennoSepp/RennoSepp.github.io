@@ -2,11 +2,6 @@
 <html lang="en">
 
 <head>
-  <FilesMatch ".(eot|ttf|otf|woff)">
-    SetEnvIf Origin ^(https://.+\.(salemove|glia)\.com)$ CORS_ALLOW_ORIGIN=$1
-    Header append Access-Control-Allow-Origin %{CORS_ALLOW_ORIGIN}e env=CORS_ALLOW_ORIGIN
-    Header merge Vary "Origin"
-  </FilesMatch>
     <!--<meta http-equiv="refresh" content="0; URL=https://rennosepp.github.io/log.html"/>-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script async src="https://api.glia.com/salemove_integration.js">
