@@ -190,10 +190,6 @@ function onVisitorQueueingState(queuingState) {
     }
 }
 
-// Initial state: Cannot queue and cannot cancel
-showCannotQueueAnywhere();
-hide(findCancelButton());
-
 // Get Glia SDK and bind listeners.
 sm.getApi({ version: 'v1' }).then(function (salemove) {
     console.log("Hello world!");
