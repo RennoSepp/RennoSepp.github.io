@@ -126,6 +126,7 @@ function listenForQueueButtonClicks(salemove, queues) {
                 submitButton.textContent = "Click here to engage";
                 document.getElementById("phoneEngagementButton").appendChild(textBox);
                 document.getElementById("phoneEngagementButton").appendChild(submitButton);
+                document.getElementById("phoneEngagementTabButton").hide;
                 submitButton.addEventListener("click", function () {
                     var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
                     salemove
