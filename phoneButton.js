@@ -118,6 +118,9 @@ function listenForQueueButtonClicks(salemove, queues) {
         // Queue upon button click
         mediaButton.addEventListener('click', function () {
             if (buttonMedium === 'phone') {
+                input = document.createElement("input");
+                input.setAttribute("type", "text");
+                document.body.appendChild(input);
                 // Read the visitor's phone number from a separate UI element or from
                 // another information source.
                 var visitorPhoneNumber = '+37256943333';
