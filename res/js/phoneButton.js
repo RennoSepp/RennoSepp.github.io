@@ -129,6 +129,7 @@ function listenForQueueButtonClicks(salemove, queues) {
                     document.getElementById("phoneEngagementButton").appendChild(submitButton);
                     document.getElementById("phoneEngagementTabButton").hide;
                     submitButton.addEventListener("click", function () {
+                        console.log("HEA");
                         var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
                         salemove
                             .queueForEngagement(buttonMedium, {
@@ -138,6 +139,7 @@ function listenForQueueButtonClicks(salemove, queues) {
                     });
                 }
             } else {
+                console.log("HALB");
                 salemove
                     .queueForEngagement(buttonMedium, { queueId: queueId })
                     .catch(showFailedToQueueView);
