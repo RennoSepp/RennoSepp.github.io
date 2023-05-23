@@ -118,8 +118,8 @@ function listenForQueueButtonClicks(salemove, queues) {
         // Queue upon button click
         mediaButton.addEventListener('click', function () {
             console.log("VAJUTUS");
-            if (document.getElementById('phoneNumberTextBox') == null) {
-                if (buttonMedium === 'phone') {
+            if (buttonMedium === 'phone') {
+                if (document.getElementById('phoneNumberTextBox') == null) {
                     textBox = document.createElement("input");
                     submitButton = document.createElement("button");
                     textBox.setAttribute("type", "text");
@@ -129,7 +129,8 @@ function listenForQueueButtonClicks(salemove, queues) {
                     document.getElementById("phoneEngagementButton").appendChild(textBox);
                     document.getElementById("phoneEngagementButton").appendChild(submitButton);
                     document.getElementById("phoneEngagementTabButton").hide;
-                    submitButton.addEventListener("click", function () {
+                    }
+                 submitButton.addEventListener("click", function () {
                         console.log("HEA");
                         var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
                         salemove
@@ -138,7 +139,7 @@ function listenForQueueButtonClicks(salemove, queues) {
                                 phoneNumber: visitorPhoneNumber
                             }).catch(showFailedToQueueView);
                     });
-                }
+          
             } else {
                 console.log("HALB");
                 salemove
