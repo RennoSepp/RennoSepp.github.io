@@ -117,6 +117,7 @@ function listenForQueueButtonClicks(salemove, queues) {
 
         // Queue upon button click
         mediaButton.addEventListener('click', function () {
+            console.log("VAJUTUS");
             if (document.getElementById('phoneNumberTextBox') == null) {
                 if (buttonMedium === 'phone') {
                     textBox = document.createElement("input");
