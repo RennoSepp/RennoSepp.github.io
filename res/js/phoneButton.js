@@ -117,24 +117,26 @@ function listenForQueueButtonClicks(salemove, queues) {
 
         // Queue upon button click
         mediaButton.addEventListener('click', function () {
-            if (buttonMedium === 'phone') {
-                textBox = document.createElement("input");
-                submitButton = document.createElement("button");
-                textBox.setAttribute("type", "text");
-                textBox.setAttribute("id", "phoneNumberTextBox");
-                submitButton.setAttribute("id", "phoneNumberSubmitButton");
-                submitButton.textContent = "Click here to engage";
-                document.getElementById("phoneEngagementButton").appendChild(textBox);
-                document.getElementById("phoneEngagementButton").appendChild(submitButton);
-                document.getElementById("phoneEngagementTabButton").hide;
-                submitButton.addEventListener("click", function () {
-                    var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
-                    salemove
-                        .queueForEngagement(buttonMedium, {
-                            queueId: queueId,
-                            phoneNumber: visitorPhoneNumber
-                        }).catch(showFailedToQueueView);
-                });
+            if (document.getElementById('phoneNumberTextBox') == null) {
+                if (buttonMedium === 'phone') {
+                    textBox = document.createElement("input");
+                    submitButton = document.createElement("button");
+                    textBox.setAttribute("type", "text");
+                    textBox.setAttribute("id", "phoneNumberTextBox");
+                    submitButton.setAttribute("id", "phoneNumberSubmitButton");
+                    submitButton.textContent = "Click here to engage";
+                    document.getElementById("phoneEngagementButton").appendChild(textBox);
+                    document.getElementById("phoneEngagementButton").appendChild(submitButton);
+                    document.getElementById("phoneEngagementTabButton").hide;
+                    submitButton.addEventListener("click", function () {
+                        var visitorPhoneNumber = document.getElementById("phoneNumberTextBox").value;
+                        salemove
+                            .queueForEngagement(buttonMedium, {
+                                queueId: queueId,
+                                phoneNumber: visitorPhoneNumber
+                            }).catch(showFailedToQueueView);
+                    });
+                }
             } else {
                 salemove
                     .queueForEngagement(buttonMedium, { queueId: queueId })
