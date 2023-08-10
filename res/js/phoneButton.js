@@ -226,6 +226,8 @@ sm.getApi({ version: 'v1' }).then(function (salemove) {
 
 const message = '<a data-sm-show-media-selection-on="click" href="javascript:void(0);">Contact Us</a>';
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
+
+sm.getApi({version: 'v1'}).then((glia) => {
 function attachQueueStatusLogic () {
         var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"] // Placeholder Queue ID can be added here
         // Fetch the initial state of the queue
@@ -263,8 +265,6 @@ function attachQueueStatusLogic () {
             });
         });
     };
-
-sm.getApi({version: 'v1'}).then((glia) => {
     document.getElementById("search").addEventListener("click", attachQueueStatusLogic);
   const onQueueStateUpdate = (queueState) => {
       
