@@ -288,9 +288,9 @@ sm.getApi({version: 'v1'}).then((glia) => {
   }
 
   // Store the initial situation to be able to replace it back and forth.
-  phoneArr.forEach((elem) => {
-    elem.setAttribute("glia-phone-original", elem.innerHTML);
-  });
+  //phoneArr.forEach((elem) => {
+  //  elem.setAttribute("glia-phone-original", elem.innerHTML);
+  //});
 
   // Add listener to act in case any queue state is changed.
   glia.addEventListener(glia.EVENTS.QUEUE_STATE_UPDATE, onQueueStateUpdate);
