@@ -228,7 +228,48 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
+    var attachQueueStatusLogic = function () {
+        var ignoredQueueIds = [messageQueueId] // Placeholder Queue ID can be added here
+
+        // Fetch the initial state of the queue
+        salemove.getQueues().then(function (queues) {
+            // To be able to conveniently look up queues by their IDs
+            var queuesByIds = queues.reduce(function (res, queue) {
+                var queueId = queue.id;
+                if (!ignoredQueueIds.includes(queueId)) {
+                    res[queueId] = queue;
+                }
+                return res;
+            }, {});
+
+            var queueIds = Object.keys(queuesByIds);
+
+            maybeTriggerQueueMediaSelection = function () {
+                // Find all queues which are currently in OPEN state
+                const openedQueues = queueIds.reduce(function (res, queueId) {
+                    var queue = queuesByIds[queueId];
+                    if (queue.state.status === queue.state.STATUSES.OPEN) {
+                        res.push(queue);
+                    }
+                    return res;
+                }, []);
+
+                if (openedQueues.length > 0) {
+                    // For now, setting whichever Queue is the first one in the list.
+                    salemove.visitorApp.triggerQueueMediaSelection(openedQueues[0]);
+                }
+            };
+
+            // Update queues when they have new updates
+            salemove.subscribeToQueueStateUpdates(queueIds, function (queueUpdate) {
+                queuesByIds[queueUpdate.id] = queueUpdate;
+            });
+        });
+    };
+    // window.addEventListener('load', attachQueueStatusLogic);
+    attachQueueStatusLogic();
   const onQueueStateUpdate = (queueState) => {
+      
     // Replace phone number elements with the control when a queue with audio or phone ability is available.
     if (queueState.state === queueState.QUEUE_STATES.CAN_QUEUE &&
         (queueState.medias.includes('audio') ||
