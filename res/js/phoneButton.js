@@ -229,9 +229,9 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 
 sm.getApi({version: 'v1'}).then((glia) => {
 function attachQueueStatusLogic () {
-        var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"] // Placeholder Queue ID can be added here
+        var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"]; // Placeholder Queue ID can be added here
         // Fetch the initial state of the queue
-        salemove.getQueues().then(function (queues) {
+        glia.getQueues().then(function (queues) {
             // To be able to conveniently look up queues by their IDs
             var queuesByIds = queues.reduce(function (res, queue) {
                 var queueId = queue.id;
@@ -255,12 +255,12 @@ function attachQueueStatusLogic () {
 
                 if (openedQueues.length > 0) {
                     // For now, setting whichever Queue is the first one in the list.
-                    salemove.visitorApp.triggerQueueMediaSelection(openedQueues[0]);
+                    glia.visitorApp.triggerQueueMediaSelection(openedQueues[0]);
                 }
             };
 
             // Update queues when they have new updates
-            salemove.subscribeToQueueStateUpdates(queueIds, function (queueUpdate) {
+            glia.subscribeToQueueStateUpdates(queueIds, function (queueUpdate) {
                 queuesByIds[queueUpdate.id] = queueUpdate;
             });
         });
