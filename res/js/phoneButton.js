@@ -265,7 +265,7 @@ sm.getApi({version: 'v1'}).then((glia) => {
             });
         });
     };
-    window.addEventListener('load', attachQueueStatusLogic);
+    document.getElementById("search").addEventListener("click", attachQueueStatusLogic);
   const onQueueStateUpdate = (queueState) => {
       
     // Replace phone number elements with the control when a queue with audio or phone ability is available.
