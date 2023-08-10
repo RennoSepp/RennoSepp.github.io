@@ -229,8 +229,7 @@ const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
     var attachQueueStatusLogic = function () {
-        var ignoredQueueIds = [messageQueueId] // Placeholder Queue ID can be added here
-
+        var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"] // Placeholder Queue ID can be added here
         // Fetch the initial state of the queue
         salemove.getQueues().then(function (queues) {
             // To be able to conveniently look up queues by their IDs
@@ -266,8 +265,7 @@ sm.getApi({version: 'v1'}).then((glia) => {
             });
         });
     };
-    // window.addEventListener('load', attachQueueStatusLogic);
-    attachQueueStatusLogic();
+    window.addEventListener('search', attachQueueStatusLogic);
   const onQueueStateUpdate = (queueState) => {
       
     // Replace phone number elements with the control when a queue with audio or phone ability is available.
