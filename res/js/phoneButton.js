@@ -228,8 +228,8 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
-      var cobrowser = engagement.cobrowser;
       var testersters = function (engagement) {
+        var cobrowser = engagement.cobrowser;
         console.log("241t4q365");
         cobrowser.addBufferedEventListener(cobrowser.EVENTS.MODE_CHANGE, function(cobrowsingState) {
         console.log("testtestetse");
