@@ -233,10 +233,10 @@ sm.getApi({version: 'v1'}).then((glia) => {
         console.log("tuleme testersters sisse")
         console.log(window._cobrowsingState)
         console.log(window.cobrowsingState.mode)
-        console.log(engagement.cobrowsingState.mode)
        engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
-           console.log("tuleme listeneri sisse")
+           console.log(coBrowsingState.mode)
            console.log(window.cobrowsingState)
+           console.log("vaatame sisse")
             if (coBrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
                 console.log("engagement");
                 } else if (coBrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
