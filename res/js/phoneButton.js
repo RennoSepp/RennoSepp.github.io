@@ -228,8 +228,11 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
+    console.log("oleme uue bloki alguses");
     var testersters = function () {
+        console.log("tuleme testersters sisse")
        engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
+           console.log("tuleme listeneri sisse")
             if (window._cobrowsingState === _engagement.cobrowser.MODES.ENGAGEMENT) {
                 console.log("engagement");
                 } else if (window._cobrowsingState === _engagement.cobrowser.MODES.POINTER) {
@@ -239,8 +242,10 @@ sm.getApi({version: 'v1'}).then((glia) => {
                 }
             })
         }
+    console.log("jõuame1");
     //test the functionality of MODES change for cobrowsing:
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
+    console.log("jõuame12");
 });
 sm.getApi({version: 'v1'}).then((glia) => {                 
 function attachQueueStatusLogic () {
