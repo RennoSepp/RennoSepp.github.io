@@ -228,6 +228,18 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
+//test the functionality of MODES change for cobrowsing:
+engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
+
+    if (window._cobrowsingState === _engagement.cobrowser.MODES.ENGAGEMENT) {
+        console.log("engagement")
+    } else if (window._cobrowsingState === _engagement.cobrowser.MODES.POINTER) {
+        console.log("pointer")
+    } else if (window._cobrowsingState === _engagement.cobrowser.MODES.oBSERVATION) {
+        console.log("observation")
+    }
+});
+                                                
 function attachQueueStatusLogic () {
         var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"]; // Placeholder Queue ID can be added here
         // Fetch the initial state of the queue
