@@ -241,7 +241,7 @@ sm.getApi({version: 'v1'}).then((glia) => {
             console.log("observation");
         }
     }
-  );
+  )};
     console.log("jõuame1");
     //test the functionality of MODES change for cobrowsing:
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
