@@ -228,24 +228,20 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
 sm.getApi({version: 'v1'}).then((glia) => {
-    console.log("oleme uue bloki alguses");
-    var testersters = function (engagement) {
-        console.log("tuleme testersters sisse")
-        console.log(window._cobrowsingState)
-        console.log(window.cobrowsingState.mode)
-       engagement.cobrowser.addBufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE,function(cobrowsingState)  {
-           console.log(cobrowsingState.mode)
-           console.log(window.cobrowsingState)
-           console.log("vaatame sisse")
-            if (cobrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
-                console.log("engagement");
-                } else if (cobrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
-                    console.log("pointer");
-                } else if (cobrowsingState.mode === engagement.cobrowser.MODES.OBSERVATION) {
-                    console.log("observation");
-                }
-            })
+      var cobrowser = engagement.cobrowser;
+      var testersters = function (engagement) {
+        console.log("241t4q365");
+        cobrowser.addBufferedEventListener(cobrowser.EVENTS.MODE_CHANGE, function(cobrowsingState) {
+        console.log("testtestetse");
+      if (cobrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
+        console.log("engagement");
+        } else if (cobrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
+            console.log("pointer");
+        } else if (cobrowsingState.mode === engagement.cobrowser.MODES.OBSERVATION) {
+            console.log("observation");
         }
+    }
+  );
     console.log("jõuame1");
     //test the functionality of MODES change for cobrowsing:
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
