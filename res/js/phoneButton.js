@@ -240,7 +240,7 @@ sm.getApi({version: 'v1'}).then((glia) => {
     })
     }
 //test the functionality of MODES change for cobrowsing:
-salemove.addEventListener(salemove.EVENTS.ENGAGEMENT_START, testersters);
+glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
 ;
                                                 
 function attachQueueStatusLogic () {
