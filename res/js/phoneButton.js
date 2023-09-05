@@ -232,14 +232,16 @@ sm.getApi({version: 'v1'}).then((glia) => {
     var testersters = function (engagement) {
         console.log("tuleme testersters sisse")
         console.log(window._cobrowsingState)
-        console.log(window.cobrowsingState)
+        console.log(window.cobrowsingState.mode)
+        console.log(engagement.cobrowsingState.mode)
        engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
            console.log("tuleme listeneri sisse")
-            if (window.cobrowsingState === engagement.cobrowser.MODES.ENGAGEMENT) {
+           console.log(window.cobrowsingState)
+            if (window.cobrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
                 console.log("engagement");
-                } else if (window.cobrowsingState === engagement.cobrowser.MODES.POINTER) {
+                } else if (window.cobrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
                     console.log("pointer");
-                } else if (window.cobrowsingState === engagement.cobrowser.MODES.OBSERVATION) {
+                } else if (window.cobrowsingState.mode === engagement.cobrowser.MODES.OBSERVATION) {
                     console.log("observation");
                 }
             })
