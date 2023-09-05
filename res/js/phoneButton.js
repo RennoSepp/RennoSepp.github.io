@@ -233,15 +233,15 @@ sm.getApi({version: 'v1'}).then((glia) => {
         console.log("tuleme testersters sisse")
         console.log(window._cobrowsingState)
         console.log(window.cobrowsingState.mode)
-       engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
-           console.log(coBrowsingState.mode)
+       engagement.cobrowser.addBufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE,function(cobrowsingState)  {
+           console.log(cobrowsingState.mode)
            console.log(window.cobrowsingState)
            console.log("vaatame sisse")
-            if (coBrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
+            if (cobrowsingState.mode === engagement.cobrowser.MODES.ENGAGEMENT) {
                 console.log("engagement");
-                } else if (coBrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
+                } else if (cobrowsingState.mode === engagement.cobrowser.MODES.POINTER) {
                     console.log("pointer");
-                } else if (coBrowsingState.mode === engagement.cobrowser.MODES.OBSERVATION) {
+                } else if (cobrowsingState.mode === engagement.cobrowser.MODES.OBSERVATION) {
                     console.log("observation");
                 }
             })
