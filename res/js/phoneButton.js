@@ -229,12 +229,12 @@ const message = '<a data-sm-show-media-selection-on="click" href="javascript:voi
 
 sm.getApi({version: 'v1'}).then((glia) => {
     console.log("oleme uue bloki alguses");
-    var testersters = function () {
+    var testersters = function (engagement) {
         console.log("tuleme testersters sisse")
+        console.log(window._cobrowsingState)
+        console.log(window.cobrowsingState)
        engagement.cobrowser.addUnbufferedEventListener(engagement.cobrowser.EVENTS.MODE_CHANGE, function (coBrowsingState) {
            console.log("tuleme listeneri sisse")
-           console.log(window._cobrowsingState)
-           console.log(window.cobrowsingState)
             if (window.cobrowsingState === engagement.cobrowser.MODES.ENGAGEMENT) {
                 console.log("engagement");
                 } else if (window.cobrowsingState === engagement.cobrowser.MODES.POINTER) {
