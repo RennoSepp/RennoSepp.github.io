@@ -241,7 +241,7 @@ sm.getApi({version: 'v1'}).then((glia) => {
         }
     //test the functionality of MODES change for cobrowsing:
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
-}
+});
 sm.getApi({version: 'v1'}).then((glia) => {                 
 function attachQueueStatusLogic () {
         var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"]; // Placeholder Queue ID can be added here
