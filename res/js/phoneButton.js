@@ -285,7 +285,7 @@ function attachQueueStatusLogic () {
             });
         });
     };
-    document.getElementById("search").addEventListener("click", attachQueueStatusLogic);
+    attachQueueStatusLogic();
   const onQueueStateUpdate = (queueState) => {
       
     // Replace phone number elements with the control when a queue with audio or phone ability is available.
