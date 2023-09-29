@@ -5,11 +5,9 @@
     <!--<meta http-equiv="refresh" content="0; URL=https://rennosepp.github.io/log.html"/>-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script async src="https://api.glia.com/salemove_integration.js">
-        var __gliaLocaleFrench = function(){
+        window.onload = function(){
   sm.getApi({version: 'v1'}).then(function(api){api.setLocale('fr-CA')});
   console.log("l10n file loaded");
-            window.addEventListener('load', __gliaLocaleFrench);
-
 };
     </script>
     <meta charset="UTF-8">
