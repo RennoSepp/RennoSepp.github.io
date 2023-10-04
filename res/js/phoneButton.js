@@ -307,6 +307,8 @@ function attachQueueStatusLogic () {
     }
   }
 
+    
+
   // Store the initial situation to be able to replace it back and forth.
   //phoneArr.forEach((elem) => {
   //  elem.setAttribute("glia-phone-original", elem.innerHTML);
@@ -315,3 +317,20 @@ function attachQueueStatusLogic () {
   // Add listener to act in case any queue state is changed.
   glia.addEventListener(glia.EVENTS.QUEUE_STATE_UPDATE, onQueueStateUpdate);
 });
+
+window.onload = function(){
+  		sm.getApi({version: 'v1'}).then(function(glia) {
+    			glia.updateInformation({
+				"name-field": null,
+				"name": "Toomas",
+				"Name": null,
+				"phone": null,
+        			customAttributes: {}
+    			}).then(function() {
+			}).catch(function(error) {
+      				if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
+      				} else {
+				}
+    			});
+  		});
+	};
