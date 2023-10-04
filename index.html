@@ -7,23 +7,19 @@
     <script async src="https://api.glia.com/salemove_integration.js"></script>
     <script>
         window.onload = function(){
-          window.onload = function(){"name": "",
-	"phone":"",
-  sm.getApi({version: 'v1'}).then(function(glia) {
-    glia.updateInformation({
-        customAttributes: {}
-    }).then(function() {
-
-    }).catch(function(error) {
-      if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
-
-      } else {
-
-      }
-    });
-  });
-};
-};
+  		sm.getApi({version: 'v1'}).then(function(glia) {
+    			glia.updateInformation({
+				"name": "",
+				"phone":"",
+        			customAttributes: {}
+    			}).then(function() {
+			}).catch(function(error) {
+      				if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
+      				} else {
+				}
+    			});
+  		});
+	};
     </script>
     <meta charset="UTF-8">
     <title>login</title>
