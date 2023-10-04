@@ -7,8 +7,22 @@
     <script async src="https://api.glia.com/salemove_integration.js"></script>
     <script>
         window.onload = function(){
-  sm.getApi({version: 'v1'}).then(function(api){api.setLocale('fr-CA')});
-  console.log("l10n file loaded");
+          window.onload = function(){"name": "",
+	"phone":"",
+  sm.getApi({version: 'v1'}).then(function(glia) {
+    glia.updateInformation({
+        customAttributes: {}
+    }).then(function() {
+
+    }).catch(function(error) {
+      if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
+
+      } else {
+
+      }
+    });
+  });
+};
 };
     </script>
     <meta charset="UTF-8">
