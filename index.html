@@ -8,19 +8,17 @@
     <script>
         window.onload = function(){
   		sm.getApi({version: 'v1'}).then(function(glia) {
-    			glia.updateInformation({
-				"name-field": null,
-				"name": "Toomas",
-				"Name": null,
-				"phone": null,
-        			customAttributes: {}
+  			glia.updateInformation({
+				"name": "Glia test",
+				"phone":"+10000000000",
+    				"customAttributes":{"key":"value"},
+    				"externalId": "123-4567-890" // ExternalId can't be 5 chars long
     			}).then(function() {
-			}).catch(function(error) {
-      				if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
-      				} else {
-				}
-    			});
-  		});
+      				console.log("Successfully updated visitor attributes");
+  			}).catch(function(error) {
+      				console.log("Failed to set attributes for visitor");
+  			});
+		});
 	};
     </script>
     <meta charset="UTF-8">
