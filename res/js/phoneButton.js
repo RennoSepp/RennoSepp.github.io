@@ -477,7 +477,7 @@ window.onload = function () {
             bulletItem.textContent = bullet;
             bulletsContainer.appendChild(bulletItem);
         });
-	element.innerHTML = bulletContainer
+	element.appendChild(bulletContainer);
         return element;
     }
 }
