@@ -334,3 +334,71 @@ window.onload = function(){
     			});
   		});
 	};
+
+
+
+window.onload = function(){
+console.log("Code snippet is loading.");
+sm.getApi({version: 'v1'}).then(function(api) {
+			console.log("API call successful");
+  const customCard = message => {
+    return `
+          <div
+            class="custom-card"
+            style="border: 1px solid black; padding: 10px;"
+          >
+            <h4
+              class="custom-card-title"
+              style="color: #1cce90;"
+              title="With colors"
+            >
+              Custom Card Image PROOV
+            </h4>
+            <br/>
+            <img
+              class="custom-card-image"
+              style="width: 200px;"
+              src="https://storage/example.gif"
+              alt="Some picture"
+              title="With a sample image"
+            />
+            <br/>
+            <br/>
+            <h4
+              class="custom-card-title"
+              style="color: #670405;"
+            >
+              Custom Card JSON message
+            </h4>
+            <textarea
+              class="custom-card-message-area"
+              style="border: none; color: #05505c; width: 190px; font-size: 10px; line-height: 1"
+            >
+              ${JSON.stringify(message, undefined, 2)}
+            </textarea>
+          </div>
+        `;
+  };
+
+  const createCustomCard = function(metadata) {
+    const element = document.createElement('div');
+console.log("We are creating the custom card");
+    element.innerHTML = customCard(metadata);
+	  console.log("FINISHED");
+
+    return element.outerHTML;
+  };
+
+  api.visitorApp.setChatMessageRenderer(function(message) {
+    if (!message.metadata) {
+	    console.log("NO");
+      return false;
+    }
+	console.log("YES");
+    const customCard = document.createElement('div');
+    customCard.innerHTML = createCustomCard(message.metadata);
+
+    return customCard;
+  });
+});
+};
