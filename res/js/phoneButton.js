@@ -355,6 +355,7 @@ window.onload = function () {
                 return createImageElement(metadata);
             }
             if (metadata.bullets) {
+		console.log("We are going to get bullets");
                 return responseWithBullets(metadata.bullets);
             }
             return false;
