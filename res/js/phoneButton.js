@@ -470,12 +470,14 @@ window.onload = function () {
     }
 
     function responseWithBullets(bullets) {
+	const element = document.createElement('div');
         const bulletsContainer = document.createElement('ul');
         bullets.forEach(bullet => {
             const bulletItem = document.createElement('li');
             bulletItem.textContent = bullet;
             bulletsContainer.appendChild(bulletItem);
         });
-        return bulletsContainer;
+	element.innerHTML = bulletContainer
+        return element;
     }
 }
