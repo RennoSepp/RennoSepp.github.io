@@ -337,68 +337,144 @@ window.onload = function(){
 
 
 
-window.onload = function(){
-console.log("Code snippet is loading.");
-sm.getApi({version: 'v1'}).then(function(api) {
-			console.log("API call successful");
-  const customCard = message => {
-    return `
-          <div
-            class="custom-card"
-            style="border: 1px solid black; padding: 10px;"
-          >
-            <h4
-              class="custom-card-title"
-              style="color: #1cce90;"
-              title="With colors"
-            >
-              Custom Card Image PROOV
-            </h4>
-            <br/>
-            <img
-              class="custom-card-image"
-              style="width: 200px;"
-              src="https://storage/example.gif"
-              alt="Some picture"
-              title="With a sample image"
-            />
-            <br/>
-            <br/>
-            <h4
-              class="custom-card-title"
-              style="color: #670405;"
-            >
-              Custom Card JSON message
-            </h4>
-            <textarea
-              class="custom-card-message-area"
-              style="border: none; color: #05505c; width: 190px; font-size: 10px; line-height: 1"
-            >
-              ${JSON.stringify(message, undefined, 2)}
-            </textarea>
-          </div>
-        `;
-  };
+window.onload = function () {
+    sm.getApi({ version: 'v1' }).then(function (api) {
+        let engagementChat;
+        api.addEventListener(api.EVENTS.ENGAGEMENT_START, (engagement) => {
+            engagementChat = engagement.chat;
+        });
+        api.visitorApp.setChatMessageRenderer(function (message) {
+            const { metadata } = message;
+            if (!metadata) {
+                return false;
+            }
+            if (metadata.buttons) {
+                return createButtonCard(message, engagementChat);
+            }
+            if (metadata.image_url) {
+                return createImageElement(metadata);
+            }
+            if (metadata.bullets) {
+                return responseWithBullets(metadata.bullets);
+            }
+            return false;
+        });
+    });
 
-  const createCustomCard = function(metadata) {
-    const element = document.createElement('div');
-console.log("We are creating the custom card");
-    element.innerHTML = customCard(metadata);
-	  console.log("FINISHED");
-
-    return element.outerHTML;
-  };
-
-  api.visitorApp.setChatMessageRenderer(function(message) {
-    if (!message.metadata) {
-	    console.log("NO");
-      return false;
+    function createButtonCard(message, engagementChat) {
+        const {
+            metadata: { buttons },
+            attachment,
+            content,
+        } = message;
+        const { imageUrl } = attachment ?? {};
+        const sendSelectedChoice = ({ selectedText, selectedValue }) => {
+            engagementChat.sendMessage(selectedText, {
+                attachment: {
+                    type: 'single_choice_response',
+                    selected_option: selectedValue,
+                },
+            });
+        };
+        const buildCardQuestionElm = (content) => {
+            const cardQuestion = document.createElement('div');
+            cardQuestion.classList.add('sm-choice-card-question');
+            cardQuestion.innerHTML = content;
+            return cardQuestion;
+        };
+        const buildCardImageElement = (imageUrl) => {
+            const cardImage = document.createElement('div');
+            cardImage.classList.add('sm-choice-card-image-container');
+            cardImage.innerHTML = `<img src="${imageUrl}" />`;
+            return cardImage;
+        };
+        const buildCardOptions = (buttons) => {
+            const cardOptions = document.createElement('div');
+            cardOptions.classList.add('sm-choice-card-options');
+            const cardOptionsContainer = document.createElement('div');
+            buttons.forEach(function ({ text, type, value }) {
+                switch (type) {
+                    case 'action': {
+                        const option = document.createElement('div');
+                        option.innerHTML = text;
+                        option.addEventListener('click', function () {
+                            sendSelectedChoice({
+                                selectedText: text,
+                                selectedValue: value,
+                            });
+                        });
+                        option.style = `
+                        font-weight: bold;
+                        `;
+                        cardOptionsContainer.appendChild(option);
+                        break;
+                    }
+                    case 'external': {
+                        const option = document.createElement('a');
+                        option.innerHTML = text;
+                        option.href = value;
+                        option.target = '_blank';
+                        option.style = `
+                        align-items: center;
+                        background-color: #efefef;
+                        border-radius: 4px;
+                        color: #353535;
+                        cursor: pointer;
+                        display: flex;
+                        font-size: 12px;
+                        justify-content: center;
+                        line-height: 16px;
+                        max-width: inherit;
+                        min-width: -webkit-fill-available;
+                        padding: 6px 20px;
+                        margin: 8px 0;
+                        text-align: center;
+                        word-break: break-word;
+                        font-weight: bold;
+                        text-decoration: underline;
+                        `;
+                        option.onmouseover = () => {
+                            option.style.background = '#848f9e4d';
+                        };
+                        option.onmouseout = () => {
+                            option.style.background = '#efefef';
+                        };
+                        cardOptionsContainer.appendChild(option);
+                        break;
+                    }
+                }
+            });
+            cardOptions.appendChild(cardOptionsContainer);
+            return cardOptions;
+        };
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('sm-choice-card-container');
+        cardContainer.appendChild(buildCardQuestionElm(content));
+        if (imageUrl) {
+            cardContainer.appendChild(buildCardImageElement(imageUrl));
+        }
+        cardContainer.appendChild(buildCardOptions(buttons));
+        return cardContainer;
     }
-	console.log("YES");
-    const customCard = document.createElement('div');
-    customCard.innerHTML = createCustomCard(message.metadata);
 
-    return customCard;
-  });
-});
-};
+    function createImageElement(metadata) {
+        const element = document.createElement('div');
+        element.innerHTML = `
+        <img
+        src=${metadata.image_url}
+        alt=${metadata.alt_text}
+        />
+        `;
+        return element;
+    }
+
+    function responseWithBullets(bullets) {
+        const bulletsContainer = document.createElement('ul');
+        bullets.forEach(bullet => {
+            const bulletItem = document.createElement('li');
+            bulletItem.textContent = bullet;
+            bulletsContainer.appendChild(bulletItem);
+        });
+        return bulletsContainer;
+    }
+}
