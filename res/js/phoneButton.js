@@ -356,7 +356,7 @@ window.onload = function () {
             }
             if (metadata.bullets) {
 		console.log("We are going to get bullets");
-                return createBulletsCard(metadata.bullets);
+                return createBulletsCard(metadata.bullets, content);
             }
             return false;
         });
@@ -472,7 +472,7 @@ window.onload = function () {
 	function createBulletsCard(bullets, content) {
     // Create the main container div
     const cardContainer = document.createElement('div');
-    cardContainer.style.border = '2px solid blue';
+    cardContainer.style.border = '2px solid #4b90e4';
     cardContainer.style.borderRadius = '8px';
     cardContainer.style.padding = '10px';
 
