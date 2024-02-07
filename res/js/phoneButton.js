@@ -472,9 +472,10 @@ window.onload = function () {
 function createBulletsCard(bullets, content) {
     // Create the main container div
     const cardContainer = document.createElement('div');
-    cardContainer.style.border = '2px solid #4b90e4'; // Set border color to #4b90e4
+    cardContainer.style.background = '#4b90e4'; // Set background color to blue
     cardContainer.style.borderRadius = '8px';
     cardContainer.style.padding = '10px';
+    cardContainer.style.color = 'white'; // Set text color to white
     cardContainer.style.marginBottom = '10px'; // Add margin bottom for spacing between cards
 
     // Create the content paragraph
@@ -506,6 +507,7 @@ function createBulletsCard(bullets, content) {
 
     return cardContainer;
 }
+
 
 
 
