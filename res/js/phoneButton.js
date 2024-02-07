@@ -472,9 +472,10 @@ window.onload = function () {
 	function createBulletsCard(bullets, content) {
     // Create the main container div
     const cardContainer = document.createElement('div');
-    cardContainer.style.border = '2px solid #4b90e4';
+    cardContainer.style.border = '2px solid #4b90e4'; // Set border color to #4b90e4
     cardContainer.style.borderRadius = '8px';
     cardContainer.style.padding = '10px';
+    cardContainer.style.marginBottom = '10px'; // Add margin bottom for spacing between cards
 
     // Create the content paragraph
     const contentParagraph = document.createElement('p');
@@ -483,9 +484,12 @@ window.onload = function () {
 
     // Create a container div for the bullets
     const bulletsContainer = document.createElement('div');
+    bulletsContainer.style.paddingLeft = '20px'; // Add left padding for bullets indentation
 
     // Create the unordered list to contain the bullets
     const bulletsList = document.createElement('ul');
+    bulletsList.style.marginTop = '5px'; // Add top margin for separation from content
+    bulletsList.style.lineHeight = '1.5'; // Adjust line height for better spacing between lines
     bullets.forEach(bullet => {
         // Create list item for each bullet
         const bulletItem = document.createElement('li');
@@ -501,6 +505,7 @@ window.onload = function () {
 
     return cardContainer;
 }
+
 
 
 }
