@@ -356,7 +356,7 @@ window.onload = function () {
             }
             if (metadata.bullets) {
 		console.log("We are going to get bullets");
-                return createBulletsCard(metadata.bullets, content);
+                return createBulletsCard(metadata.bullets, metadata.content);
             }
             return false;
         });
