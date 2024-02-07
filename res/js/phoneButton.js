@@ -470,30 +470,37 @@ window.onload = function () {
     }
 
 	function createBulletsCard(bullets, content) {
-        // Create the main container div
-        const cardContainer = document.createElement('div');
-        cardContainer.style.border = '2px solid blue';
-        cardContainer.style.borderRadius = '8px';
-        cardContainer.style.padding = '10px';
+    // Create the main container div
+    const cardContainer = document.createElement('div');
+    cardContainer.style.border = '2px solid blue';
+    cardContainer.style.borderRadius = '8px';
+    cardContainer.style.padding = '10px';
 
-        // Create the content paragraph
-        const contentParagraph = document.createElement('p');
-        contentParagraph.textContent = content;
-        cardContainer.appendChild(contentParagraph);
+    // Create the content paragraph
+    const contentParagraph = document.createElement('p');
+    contentParagraph.textContent = content;
+    cardContainer.appendChild(contentParagraph);
 
-        // Create the unordered list to contain the bullets
-        const bulletsList = document.createElement('ul');
-        bullets.forEach(bullet => {
-            // Create list item for each bullet
-            const bulletItem = document.createElement('li');
-            bulletItem.textContent = bullet;
-            bulletsList.appendChild(bulletItem);
-        });
+    // Create a container div for the bullets
+    const bulletsContainer = document.createElement('div');
 
-        // Append the bullets list to the card container
-        cardContainer.appendChild(bulletsList);
+    // Create the unordered list to contain the bullets
+    const bulletsList = document.createElement('ul');
+    bullets.forEach(bullet => {
+        // Create list item for each bullet
+        const bulletItem = document.createElement('li');
+        bulletItem.textContent = bullet;
+        bulletsList.appendChild(bulletItem);
+    });
 
-        return cardContainer;
-    }
+    // Append the bullets list to the bullets container
+    bulletsContainer.appendChild(bulletsList);
+
+    // Append the bullets container to the card container
+    cardContainer.appendChild(bulletsContainer);
+
+    return cardContainer;
+}
+
 
 }
