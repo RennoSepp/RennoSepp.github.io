@@ -319,62 +319,195 @@ function attachQueueStatusLogic () {
 });
 
 window.onload = function(){
-  		sm.getApi({version: 'v1'}).then(function(api) {
-  const customCard = message => {
-    return `
-          <div
-            class="custom-card"
-            style="border: 1px solid black; padding: 10px;"
-          >
-            <h4
-              class="custom-card-title"
-              style="color: #1cce90;"
-              title="With colors"
-            >
-              Custom Card Image
-            </h4>
-            <br/>
-            <img
-              class="custom-card-image"
-              style="width: 200px;"
-              src="https://storage/example.gif"
-              alt="Some picture"
-              title="With a sample image"
-            />
-            <br/>
-            <br/>
-            <h4
-              class="custom-card-title"
-              style="color: #670405;"
-            >
-              Custom Card JSON message
-            </h4>
-            <textarea
-              class="custom-card-message-area"
-              style="border: none; color: #05505c; width: 190px; font-size: 10px; line-height: 1"
-            >
-              ${JSON.stringify(message, undefined, 2)}
-            </textarea>
-          </div>
-        `;
-  };
+  		sm.getApi({version: 'v1'}).then(function(glia) {
+    			glia.updateInformation({
+				"name-field": null,
+				"name": "Toomas",
+				"Name": null,
+				"phone": null,
+        			customAttributes: {}
+    			}).then(function() {
+			}).catch(function(error) {
+      				if (error.cause == glia.ERRORS.NETWORK_TIMEOUT) {
+      				} else {
+				}
+    			});
+  		});
+	};
 
-  const createCustomCard = function(metadata) {
-    const element = document.createElement('div');
-    element.innerHTML = customCard(metadata);
 
-    return element.outerHTML;
-  };
 
-  api.visitorApp.setChatMessageRenderer(function(message) {
-    if (!message.metadata) {
-      return false;
+window.onload = function () {
+    sm.getApi({ version: 'v1' }).then(function (api) {
+        let engagementChat;
+        api.addEventListener(api.EVENTS.ENGAGEMENT_START, (engagement) => {
+            engagementChat = engagement.chat;
+        });
+        api.visitorApp.setChatMessageRenderer(function (message) {
+            const { metadata } = message;
+            if (!metadata) {
+                return false;
+            }
+            if (metadata.buttons) {
+                return createButtonCard(message, engagementChat);
+            }
+            if (metadata.image_url) {
+                return createImageElement(metadata);
+            }
+            if (metadata.bullets) {
+		console.log("We are going to get bullets");
+                return responseWithBullets(metadata.bullets);
+            }
+            return false;
+        });
+    });
+
+    function createButtonCard(message, engagementChat) {
+        const {
+            metadata: { buttons },
+            attachment,
+            content,
+        } = message;
+        const { imageUrl } = attachment ?? {};
+        const sendSelectedChoice = ({ selectedText, selectedValue }) => {
+            engagementChat.sendMessage(selectedText, {
+                attachment: {
+                    type: 'single_choice_response',
+                    selected_option: selectedValue,
+                },
+            });
+        };
+        const buildCardQuestionElm = (content) => {
+            const cardQuestion = document.createElement('div');
+            cardQuestion.classList.add('sm-choice-card-question');
+            cardQuestion.innerHTML = content;
+            return cardQuestion;
+        };
+        const buildCardImageElement = (imageUrl) => {
+            const cardImage = document.createElement('div');
+            cardImage.classList.add('sm-choice-card-image-container');
+            cardImage.innerHTML = `<img src="${imageUrl}" />`;
+            return cardImage;
+        };
+        const buildCardOptions = (buttons) => {
+            const cardOptions = document.createElement('div');
+            cardOptions.classList.add('sm-choice-card-options');
+            const cardOptionsContainer = document.createElement('div');
+            buttons.forEach(function ({ text, type, value }) {
+                switch (type) {
+                    case 'action': {
+                        const option = document.createElement('div');
+                        option.innerHTML = text;
+                        option.addEventListener('click', function () {
+                            sendSelectedChoice({
+                                selectedText: text,
+                                selectedValue: value,
+                            });
+                        });
+                        option.style = `
+                        font-weight: bold;
+                        `;
+                        cardOptionsContainer.appendChild(option);
+                        break;
+                    }
+                    case 'external': {
+                        const option = document.createElement('a');
+                        option.innerHTML = text;
+                        option.href = value;
+                        option.target = '_blank';
+                        option.style = `
+                        align-items: center;
+                        background-color: #efefef;
+                        border-radius: 4px;
+                        color: #353535;
+                        cursor: pointer;
+                        display: flex;
+                        font-size: 12px;
+                        justify-content: center;
+                        line-height: 16px;
+                        max-width: inherit;
+                        min-width: -webkit-fill-available;
+                        padding: 6px 20px;
+                        margin: 8px 0;
+                        text-align: center;
+                        word-break: break-word;
+                        font-weight: bold;
+                        text-decoration: underline;
+                        `;
+                        option.onmouseover = () => {
+                            option.style.background = '#848f9e4d';
+                        };
+                        option.onmouseout = () => {
+                            option.style.background = '#efefef';
+                        };
+                        cardOptionsContainer.appendChild(option);
+                        break;
+                    }
+                }
+            });
+            cardOptions.appendChild(cardOptionsContainer);
+            return cardOptions;
+        };
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('sm-choice-card-container');
+        cardContainer.appendChild(buildCardQuestionElm(content));
+        if (imageUrl) {
+            cardContainer.appendChild(buildCardImageElement(imageUrl));
+        }
+        cardContainer.appendChild(buildCardOptions(buttons));
+        return cardContainer;
     }
 
-    const customCard = document.createElement('div');
-    customCard.innerHTML = createCustomCard(message.metadata);
+    function createImageElement(metadata) {
+        const element = document.createElement('div');
+        element.innerHTML = `
+        <img
+        src=${metadata.image_url}
+        alt=${metadata.alt_text}
+        />
+        `;
+        return element;
+    }
 
-    return customCard;
-  });
-});
+    function responseWithBullets(bullets) {
+    // Create the main container div
+    const mainContainer = document.createElement('div');
+    mainContainer.classList.add('sm-chat-box-container');
+
+    // Create the message div
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('sm-chat-box-message');
+    mainContainer.appendChild(messageDiv);
+
+    // Create the operator chat box div
+    const operatorChatBox = document.createElement('div');
+    operatorChatBox.classList.add('sm-operator-chat-box');
+    messageDiv.appendChild(operatorChatBox);
+
+    // Create the span for sm-chat-text
+    const chatTextSpan = document.createElement('span');
+    
+    // Create the div with sm-chat-text
+    const chatTextDiv = document.createElement('div');
+    chatTextDiv.classList.add('sm-chat-text');
+    chatTextSpan.appendChild(chatTextDiv);
+
+    // Create the unordered list to contain the bullets
+    const bulletsList = document.createElement('ul');
+    bullets.forEach(bullet => {
+        // Create list item for each bullet
+        const bulletItem = document.createElement('li');
+        bulletItem.textContent = bullet;
+        bulletsList.appendChild(bulletItem);
+    });
+
+    // Append the bullets list to the chat text div
+    chatTextDiv.appendChild(bulletsList);
+
+    // Append the span to the operator chat box
+    operatorChatBox.appendChild(chatTextSpan);
+
+    return mainContainer;
+}
+
 }
