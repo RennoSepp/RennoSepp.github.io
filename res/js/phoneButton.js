@@ -473,7 +473,7 @@ function createBulletsCard(bullets, content) {
     // Create the main container div
     const cardContainer = document.createElement('div');
     cardContainer.style.background = '#53a0fd'; // Set background color to #53a0fd
-    cardContainer.style.borderRadius = '12px';
+    cardContainer.style.borderRadius = '17px';
     cardContainer.style.padding = '10px';
     cardContainer.style.color = 'white'; // Set text color to white
     cardContainer.style.marginBottom = '10px'; // Add margin bottom for spacing between cards
