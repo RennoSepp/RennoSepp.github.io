@@ -471,7 +471,7 @@ window.onload = function () {
 
     function responseWithBullets(bullets) {
 	const element = document.createElement('div');
-	element.classList.add('sm-chat-text', 'sm-operator-chat-box', 'sm-chat-box-message', 'sm-chat-box-container');
+	element.classList.add('sm-operator-chat-box', 'sm-chat-box-message', 'sm-chat-box-container');
         const bulletsContainer = document.createElement('ul');
         bullets.forEach(bullet => {
             const bulletItem = document.createElement('li');
