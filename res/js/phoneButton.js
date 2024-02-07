@@ -469,45 +469,31 @@ window.onload = function () {
         return element;
     }
 
-    function responseWithBullets(bullets) {
-    // Create the main container div
-    const mainContainer = document.createElement('div');
-    mainContainer.classList.add('sm-chat-box-container');
+	function createBulletsCard(bullets, content) {
+        // Create the main container div
+        const cardContainer = document.createElement('div');
+        cardContainer.style.border = '2px solid blue';
+        cardContainer.style.borderRadius = '8px';
+        cardContainer.style.padding = '10px';
 
-    // Create the message div
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('sm-chat-box-message');
-    mainContainer.appendChild(messageDiv);
+        // Create the content paragraph
+        const contentParagraph = document.createElement('p');
+        contentParagraph.textContent = content;
+        cardContainer.appendChild(contentParagraph);
 
-    // Create the operator chat box div
-    const operatorChatBox = document.createElement('div');
-    operatorChatBox.classList.add('sm-operator-chat-box');
-    messageDiv.appendChild(operatorChatBox);
+        // Create the unordered list to contain the bullets
+        const bulletsList = document.createElement('ul');
+        bullets.forEach(bullet => {
+            // Create list item for each bullet
+            const bulletItem = document.createElement('li');
+            bulletItem.textContent = bullet;
+            bulletsList.appendChild(bulletItem);
+        });
 
-    // Create the span for sm-chat-text
-    const chatTextSpan = document.createElement('span');
-    
-    // Create the div with sm-chat-text
-    const chatTextDiv = document.createElement('div');
-    chatTextDiv.classList.add('sm-chat-text');
-    chatTextSpan.appendChild(chatTextDiv);
+        // Append the bullets list to the card container
+        cardContainer.appendChild(bulletsList);
 
-    // Create the unordered list to contain the bullets
-    const bulletsList = document.createElement('ul');
-    bullets.forEach(bullet => {
-        // Create list item for each bullet
-        const bulletItem = document.createElement('li');
-        bulletItem.textContent = bullet;
-        bulletsList.appendChild(bulletItem);
-    });
-
-    // Append the bullets list to the chat text div
-    chatTextDiv.appendChild(bulletsList);
-
-    // Append the span to the operator chat box
-    operatorChatBox.appendChild(chatTextSpan);
-
-    return mainContainer;
-}
+        return cardContainer;
+    }
 
 }
