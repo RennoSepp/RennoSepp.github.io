@@ -494,6 +494,7 @@ window.onload = function () {
 
     // Create the unordered list to contain the bullets
     const bulletsList = document.createElement('ul');
+    bulletsList.style.textAlign = 'center'; // Align bulletsList to center
     bullets.forEach(bullet => {
         // Create list item for each bullet
         const bulletItem = document.createElement('li');
@@ -509,5 +510,6 @@ window.onload = function () {
 
     return mainContainer;
 }
+
 
 }
