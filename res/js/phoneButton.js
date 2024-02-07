@@ -469,7 +469,7 @@ window.onload = function () {
         return element;
     }
 
-	function createBulletsCard(bullets, content) {
+function createBulletsCard(bullets, content) {
     // Create the main container div
     const cardContainer = document.createElement('div');
     cardContainer.style.border = '2px solid #4b90e4'; // Set border color to #4b90e4
@@ -489,11 +489,12 @@ window.onload = function () {
     // Create the unordered list to contain the bullets
     const bulletsList = document.createElement('ul');
     bulletsList.style.marginTop = '5px'; // Add top margin for separation from content
-    bulletsList.style.lineHeight = '1.5'; // Adjust line height for better spacing between lines
+
     bullets.forEach(bullet => {
         // Create list item for each bullet
         const bulletItem = document.createElement('li');
         bulletItem.textContent = bullet;
+        bulletItem.style.marginBottom = '5px'; // Add margin bottom for spacing between lines
         bulletsList.appendChild(bulletItem);
     });
 
@@ -505,6 +506,7 @@ window.onload = function () {
 
     return cardContainer;
 }
+
 
 
 
