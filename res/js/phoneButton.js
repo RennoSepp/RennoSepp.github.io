@@ -458,7 +458,9 @@ window.onload = function () {
         return cardContainer;
     }
 
-    function createImageElement(metadata, width = '200px', height = '200px') {
+function createImageElement(metadata, width = '200px', height = '200px') {
+	console.log("successful");
+	console.log(metadata.image_url);
     const element = document.createElement('div');
     element.innerHTML = `
     <img
