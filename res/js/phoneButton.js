@@ -458,16 +458,17 @@ window.onload = function () {
         return cardContainer;
     }
 
-    function createImageElement(metadata) {
-        const element = document.createElement('div');
-        element.innerHTML = `
-        <img
-        src=${metadata.image_url}
-        alt=${metadata.alt_text}
-        />
-        `;
-        return element;
-    }
+    function createImageElement(metadata, width = '200px', height = '200px') {
+    const element = document.createElement('div');
+    element.innerHTML = `
+    <img
+        src="${metadata.image_url}"
+        alt="${metadata.alt_text}"
+        style="width: ${width}; height: ${height};"
+    />
+    `;
+    return element;
+}
 
 function createBulletsCard(bullets, content) {
     // Create the main container div
