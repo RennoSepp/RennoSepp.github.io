@@ -352,7 +352,6 @@ window.onload = function () {
                 return createButtonCard(message, engagementChat);
             }
             if (metadata.image_url) {
-		    console.log("me oleme image sees");
                 return createImageElement(metadata);
             }
             if (metadata.bullets) {
@@ -459,8 +458,7 @@ window.onload = function () {
         return cardContainer;
     }
 
-function createImageElement(metadata, width = '200px', height = '200px') {
-	console.log("successful");
+function createImageElement(metadata) {
     const element = document.createElement('div');
     element.innerHTML = `
     <img
