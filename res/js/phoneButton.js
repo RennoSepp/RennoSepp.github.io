@@ -206,6 +206,7 @@ function onVisitorQueueingState(queuingState) {
 }
 
 // Get Glia SDK and bind listeners.
+window.onload = function () {
 sm.getApi({ version: 'v1' }).then(function (salemove) {
     console.log("Hello world!");
     salemove.addEventListener(
@@ -223,10 +224,12 @@ sm.getApi({ version: 'v1' }).then(function (salemove) {
         salemove.subscribeToQueueStateUpdates(queueIds, onQueueState);
     });
 });
+}
 
 const message = '<a data-sm-show-media-selection-on="click" href="javascript:void(0);">Contact Us</a>';
 //const phoneArr = Array.from(document.body.querySelectorAll(".phone-number"));
 
+window.onload = function () {
 sm.getApi({version: 'v1'}).then((glia) => {
       var testersters = function (engagement) {
         var cobrowser = engagement.cobrowser;
@@ -247,6 +250,8 @@ sm.getApi({version: 'v1'}).then((glia) => {
     glia.addEventListener(glia.EVENTS.ENGAGEMENT_START, testersters);
     console.log("jõuame12");
 });
+}
+window.onload = function () {
 sm.getApi({version: 'v1'}).then((glia) => {                 
 function attachQueueStatusLogic () {
         var ignoredQueueIds = ["fbc90f45-0d60-4004-ad84-6606b5471d67"]; // Placeholder Queue ID can be added here
@@ -317,6 +322,7 @@ function attachQueueStatusLogic () {
   // Add listener to act in case any queue state is changed.
   glia.addEventListener(glia.EVENTS.QUEUE_STATE_UPDATE, onQueueStateUpdate);
 });
+}
 
 window.onload = function(){
   		sm.getApi({version: 'v1'}).then(function(glia) {
