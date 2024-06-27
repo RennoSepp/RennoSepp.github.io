@@ -4,14 +4,7 @@
 
 <head>
     <script async src="https://api.glia.com/salemove_integration.js">
-    sm.getApi({version: 'v1'}).then(function(glia) {
-        function onEngagementEnd(){
-            window.location.href = "https://rennosepp.github.io/my-baycare-patient-portal.html";
-        }
-        glia.addEventListener(glia.EVENTS.ENGAGEMENT_END, onEngagementEnd);
-    });
-  sm.getApi({version: 'v1'}).then(function(api){api.setLocale('en-US')});
-  console.log("l10n file loaded");
+        console.log("l10n file loaded");
     </script>
     <link rel="stylesheet" href="res/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
