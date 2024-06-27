@@ -10,6 +10,8 @@
         }
         glia.addEventListener(glia.EVENTS.ENGAGEMENT_END, onEngagementEnd);
     });
+  sm.getApi({version: 'v1'}).then(function(api){api.setLocale('en-US')});
+  console.log("l10n file loaded");
     </script>
     <link rel="stylesheet" href="res/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,10 +20,6 @@
     <title>NoteIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="res/js/phoneButton.js">
-      __gliaLocaleEnglish = function(){
-  sm.getApi({version: 'v1'}).then(function(api){api.setLocale('en-US')});
-  console.log("l10n file loaded");
-};
     </script>
 </head>
 
