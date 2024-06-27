@@ -7,7 +7,16 @@
     </script>
     <script>
         console.log("l10n file loaded222");
-        sm.getApi({version: 'v1'}).then(function(api){api.setLocale('fr-CA')});
+        window.onload = function() {
+            __gliaLocaleEnglish();
+        };
+
+        function __gliaLocaleEnglish() {
+            sm.getApi({ version: 'v1' }).then(function(api) {
+            api.setLocale('en-US');
+        });
+    console.log("l10n file loaded");
+}
         console.log("l10n file loaded");
     </script>
     <link rel="stylesheet" href="res/css/index.css">
