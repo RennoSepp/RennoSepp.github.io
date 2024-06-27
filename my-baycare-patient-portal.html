@@ -7,17 +7,17 @@
     </script>
     <script>
         console.log("l10n file loaded222");
+
+        function __gliaLocaleEnglish() {
+                sm.getApi({ version: 'v1' }).then(function(api) {
+                api.setLocale('en-US');
+                });
+            console.log("l10n file loaded");
+        }
+
         window.onload = function() {
             __gliaLocaleEnglish();
         };
-
-        function __gliaLocaleEnglish() {
-            sm.getApi({ version: 'v1' }).then(function(api) {
-            api.setLocale('en-US');
-        });
-    console.log("l10n file loaded");
-}
-        console.log("l10n file loaded");
     </script>
     <link rel="stylesheet" href="res/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
