@@ -8,15 +8,17 @@
     <script>
         console.log("l10n file loaded222");
 
-        function __gliaLocaleEnglish() {
+        function gliaLocaleEnglish() {
+            console.log("123");
                 sm.getApi({ version: 'v1' }).then(function(api) {
+                console.log("456");
                 api.setLocale('en-US');
                 });
             console.log("l10n file loaded");
         }
 
         window.onload = function() {
-            __gliaLocaleEnglish();
+            gliaLocaleEnglish();
         };
     </script>
     <link rel="stylesheet" href="res/css/index.css">
