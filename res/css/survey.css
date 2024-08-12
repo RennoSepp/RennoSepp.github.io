@@ -1,0 +1,21 @@
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    color: gray;
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: gold;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+button {
+    display: block;
+    margin-top: 10px;
+}
