@@ -1,11 +1,11 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Gilroy, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: linear-gradient(to bottom, #7c19dd 0%, #7c19dd 200px, white 200px, white 100%);
+    background-color: linear-gradient(to bottom, #7302ae 0%, #7302ae 300px, white 300px, white 100%);
 }
 
 .review-container {
@@ -39,7 +39,6 @@ textarea {
     border-radius: 4px;
     padding: 5px;
     resize: none;
-    font-family: Gilroy, Arial, sans-serif;
 }
 
 button {
