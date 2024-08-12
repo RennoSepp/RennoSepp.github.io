@@ -11,7 +11,7 @@ body {
 .review-container {
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 24px;
     text-align: center;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -39,6 +39,7 @@ textarea {
     border-radius: 4px;
     padding: 5px;
     resize: none;
+    font-family: Gilroy, Arial, sans-serif;
 }
 
 button {
