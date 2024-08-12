@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: linear-gradient(to bottom, #7c19dd 0%, #7c19dd 200px, white 200px, white 100%);
 }
 
 .review-container {
