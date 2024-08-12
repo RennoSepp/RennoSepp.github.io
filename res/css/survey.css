@@ -5,7 +5,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    height: 100%;
     background: linear-gradient(to bottom, #7302ae 0%, #7302ae 350px, white 350px, white 100%);
+}
+
+.content {
+    min-height: calc(100vh - 70px); /* Adjust 70px to the height of your footer */
+    /* Other styling for your content */
 }
 
 .review-container {
@@ -57,7 +63,7 @@ button {
     cursor: pointer;
 }
 
-footer{
+footer {
     font-size: 13px;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -65,6 +71,6 @@ footer{
     display: block;
     box-sizing: border-box;
     unicode-bidi: isolate;
-
-
+    height: 70px; /* Set the height of your footer */
+    width: 100%;
 }
