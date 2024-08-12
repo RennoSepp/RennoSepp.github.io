@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Page</title>
+    <title>Feedback Page</title>
     <link rel="stylesheet" href="res/css/survey.css">
 </head>
 <body>
-    <div class="rating">
-        <!-- Star rating input -->
-        <span class="star" data-value="5">&#9733;</span>
-        <span class="star" data-value="4">&#9733;</span>
-        <span class="star" data-value="3">&#9733;</span>
-        <span class="star" data-value="2">&#9733;</span>
-        <span class="star" data-value="1">&#9733;</span>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="feedback-box">
+            <div class="stars">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+            <h1>Awesome! We got it.</h1>
+            <p>If you have a moment, tell us how it went so we can keep it up!</p>
+            <textarea placeholder="Optional comment"></textarea>
+            <button>Add a comment</button>
+        </div>
+        <footer>
+            <p>Powered by <strong>Jira Service Management</strong></p>
+        </footer>
     </div>
-    <textarea id="reviewText" placeholder="Leave a review..."></textarea>
-    <button onclick="submitReview()">Submit Review</button>
     <script src="res/js/survey.js"></script>
 </body>
 </html>
