@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave a Review</title>
     <link rel="stylesheet" href="res/css/survey.css">
 </head>
+
 <body>
-    <div class="review-container">
-        <div class="stars">
-            <!-- Star rating input -->
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
+    <div>
+        <div class="review-container">
+            <div class="stars">
+                <!-- Star rating input -->
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>
+            <p class="feedback-text">Awesome! We got it.<br>If you have a moment, tell us how it went so we can keep it
+                up!</p>
+            <textarea id="reviewText" placeholder="Optional comment"></textarea>
+            <button onclick="submitReview()">Add a comment</button>
         </div>
-        <p class="feedback-text">Awesome! We got it.<br>If you have a moment, tell us how it went so we can keep it up!</p>
-        <textarea id="reviewText" placeholder="Optional comment"></textarea>
-        <button onclick="submitReview()">Add a comment</button>
     </div>
     <script src="res/js/survey.js"></script>
 </body>
+
 </html>
