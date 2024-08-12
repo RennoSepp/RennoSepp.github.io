@@ -9,11 +9,6 @@ body {
     background: linear-gradient(to bottom, #7302ae 0%, #7302ae 350px, white 350px, white 100%);
 }
 
-.content {
-    min-height: calc(100vh - 70px); /* Adjust 70px to the height of your footer */
-    /* Other styling for your content */
-}
-
 .review-container {
     background-color: white;
     padding: 20px;
