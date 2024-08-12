@@ -1,13 +1,17 @@
 let rating = 0;
 const stars = document.querySelectorAll('.star');
-stars.forEach(star => {
-    star.onclick = () => {
-        rating = star.dataset.value;
-        stars.forEach(s => {
-            s.style.color = s.dataset.value <= rating ? 'gold' : 'gray';
-        });
-    };
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        rating = index + 1;
+        updateStars();
+    });
 });
+
+function updateStars() {
+    stars.forEach((star, index) => {
+        star.style.color = index < rating ? 'purple' : 'gray';
+    });
+}
 
 function submitReview() {
     const reviewText = document.getElementById('reviewText').value;

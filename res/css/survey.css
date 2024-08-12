@@ -1,86 +1,53 @@
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #4a148c; /* Purple background */
-}
-
-.container {
+    background-color: #7a42f4;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    color: white;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.header {
-    background-color: #4a148c;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.logo {
-    height: 50px;
-}
-
-.feedback-box {
+.review-container {
     background-color: white;
-    color: #333;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     text-align: center;
-    max-width: 400px;
-    width: 100%;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .stars {
-    margin-bottom: 20px;
+    color: purple;
+    font-size: 25px;
 }
 
 .star {
-    font-size: 30px;
-    color: #8e24aa;
+    cursor: pointer;
 }
 
-h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-p {
-    margin: 20px 0;
-    font-size: 16px;
-    color: #666;
+.feedback-text {
+    margin-top: 20px;
+    color: #333;
 }
 
 textarea {
     width: 100%;
-    height: 100px;
+    height: 50px;
+    margin-top: 20px;
+    border: 2px solid #ccc;
     border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 14px;
-    margin-bottom: 20px;
+    padding: 5px;
+    resize: none;
 }
 
 button {
-    background-color: #8e24aa;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: purple;
     color: white;
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
-    font-size: 16px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #7b1fa2;
-}
-
-footer {
-    margin-top: 40px;
-    color: white;
-    font-size: 14px;
 }
