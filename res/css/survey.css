@@ -17,6 +17,11 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
 .stars {
     color: purple;
     font-size: 25px;
