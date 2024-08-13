@@ -156,8 +156,10 @@ textarea {
 
 textarea:focus {
     outline: none !important;
+    background-color: white;
     border-color: #4e148c;
-    box-shadow: 0 0 2px #4e148c;
+    box-shadow: 0 0 3px #4e148c;
+    transition: all 0.5s ease;
 }
 
 .logo-image {

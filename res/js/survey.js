@@ -70,3 +70,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+window.addEventListener('load', function() {
+
+    // Function to get URL parameters
+    function getQueryParam(param) {
+        let search = new URLSearchParams(window.location.search);
+        return search.get(param);
+    }
+
+    // Get the 'rating' parameter from the URL
+    let rating = getQueryParam('rating');
+
+    if (rating && rating >= 1 && rating <= 5) {
+        // Construct the ID of the corresponding input element
+        const ratingId = 'rate-' + rating;
+
+        // Find the radio input by its ID and check it
+        const ratingInput = document.getElementById(ratingId);
+        if (ratingInput) {
+            ratingInput.checked = true;
+
+            // Optional: If you want to simulate a click event on the label
+            const ratingLabel = document.querySelector(`label[for="${ratingId}"]`);
+            if (ratingLabel) {
+                ratingLabel.click();
+            }
+        }
+    }
+});
