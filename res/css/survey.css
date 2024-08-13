@@ -1,57 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Gilroy, Arial, sans-serif;
+}
+
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Gilroy, Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    text-align: center;
+    height: 100vh;
     background: linear-gradient(to bottom, #7302ae 0%, #7302ae 350px, white 350px, white 100%);
+}
+
+.main-message{
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5;
+    text-transform: none;
+    margin: 10px 0 10px 0;
+    padding: 0;
+    letter-spacing: -0.008em;
+    color: #333;
 }
 
 .review-container {
     background-color: white;
-    padding: 20px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 40px;
     border-radius: 24px;
-    text-align: center;
-    width: 700px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-direction: column;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-div {
-    margin: 0;
-    padding: 0;
-}
-
-.stars {
-    color: purple;
+.review-container .text{
     font-size: 25px;
+    color: black;
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
-.star {
+.review-container .change{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
     cursor: pointer;
+    text-decoration: underline;
+}
+
+.review-container .post {
+    display: none;
+}
+
+.review-container .rating-widget input{
+    display: none;
+}
+
+.rating-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.rating-widget label{
+    color: black;
+    font-size: 25px;
+    padding: 10px;
+    float: right;
+}
+
+input:not(checked) ~ label:hover,
+input:not(checked) ~ label:hover ~ label{
+    color: #7302ae;
+}
+
+input:checked ~ label {
+    color: #7302ae;
+}
+
+input#rate-5:checked ~ label {
+    color: #7302ae;
+    text-shadow: 0 0 5px #6c7683;
+}
+
+.fa-star:hover {
+    cursor: pointer;
+}
+
+
+form .submitBtn button{
+    width: 50%;
+    height: 30px;
+    margin: 20px 0;
+    background-color: #7302ae;
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 5px;
+    border: 1px;
+}
+
+form .submitBtn button:hover{
+    background-color: #4e148c;
+}
+
+
+form .star-description{
+    color: black;
+    font-weight: 400;
+    margin: 15px 0 20px;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.star-description{
+    width: 85%;
+    color: rgb(80, 80, 80);
 }
 
 .feedback-text {
-    margin-top: 20px;
-    color: #333;
+    color: rgb(80, 80, 80)3;
 }
 
 textarea {
-    width: 100%;
-    height: 50px;
-    margin-top: 20px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
+    height: 150px;
+    width: 160%;
+    margin-top: 40px;
+    margin-left: -30%;  /* Pulls the element back towards the center */
+    margin-right: -30%;
     resize: none;
+    border: 1px solid #DFE1E6;
+    background-color: #FAFBFC;
+    padding: 10px;
+    font-size: 14px;
+    flex-grow: 2;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: purple;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.logo-image {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 95px;
+    height: auto;
+    z-index: 1000;
+}
+
+.star-rating {
+    margin-bottom: 40px;
 }

@@ -18,3 +18,55 @@ function submitReview() {
     console.log('Rating:', rating, 'Review:', reviewText);
     // Here you can add code to send data to a server
 }
+
+const submitBtn = document.querySelector(".submitBtn")
+const post = document.querySelector(".post")
+const widget = document.querySelector(".rating-widget")
+const changeBtn = document.querySelector(".change")
+
+submitBtn.onclick = ()=> {
+    widget.style.display = "none";
+    post.style.display = "block";
+    event.preventDefault();
+}
+
+changeBtn.onclick = ()=> {
+    widget.style.display = "block";
+    post.style.display = "none";
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const starRatings = document.querySelectorAll('.rating-widget input[type="radio"]');
+    const description = document.querySelector('.star-description');
+    const mainMessage = document.querySelector('.main-message');
+
+    starRatings.forEach(star => {
+        star.addEventListener('change', function() {
+            const rating = this.id.split('-')[1]; // Gets the number from id like 'rate-5'
+            switch (rating) {
+                case '5':
+                    description.textContent = 'If you have a moment, tell us how it went so we can keep it up!';
+                    mainMessage.textContent = 'Awesome! We got it.'
+                    break;
+                case '4':
+                    description.textContent = 'If you have a moment, tell us how it went so we can keep it up!';
+                    mainMessage.textContent = 'Awesome! We got it.'
+                    break;
+                case '3':
+                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
+                    mainMessage.textContent = 'Thanks! We got it.'
+                    break;
+                case '2':
+                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
+                    mainMessage.textContent = 'Sorry to hear that.'
+                    break;
+                case '1':
+                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
+                    mainMessage.textContent = 'Sorry to hear that.'
+                    break;
+                default:
+                    description.textContent = 'Select a rating';
+            }
+        });
+    });
+});

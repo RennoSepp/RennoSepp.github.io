@@ -6,23 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave a Review</title>
     <link rel="stylesheet" href="res/css/survey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
+    <a href="https://glia.atlassian.net/servicedesk/customer/portals">
+        <img class="logo-image"
+            src="res/images/glia-logo.png" alt="Glia Logo" width="600" height="400">
+    </a>
     <div class="review-container">
-        <div>
-            <div class="stars">
-                <!-- Star rating input -->
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
+        <div class="post">
+            <div class="text">Thank you!</div>
+            <div class="change"></div>
+        </div>
+        <div class="rating-widget">
+            <h1 class="main-message">Please give us a rating below.</h1>
+            <div class="star-rating">
+                <input type="radio" name="rate" id="rate-5">
+                <label for="rate-5" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-4">
+                <label for="rate-4" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-3">
+                <label for="rate-3" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-2">
+                <label for="rate-2" class="fas fa-star"></label>
+                <input type="radio" name="rate" id="rate-1">
+                <label for="rate-1" class="fas fa-star"></label>
             </div>
-            <p class="feedback-text">Awesome! We got it.<br>If you have a moment, tell us how it went so we can keep it
-                up!</p>
-            <textarea id="reviewText" placeholder="Optional comment"></textarea>
-            <button onclick="submitReview()">Add a comment</button>
+            <p class="star-description">If you have a moment, we'd also love to hear your feedback on your experience
+                with us.</p>
+            <form>
+                <div>
+                    <textarea cols="30" placeholder="Optional comment"></textarea>
+                </div>
+                <div class="submitBtn">
+                    <button type="submit">Add a comment</button>
+                </div>
+            </form>
         </div>
     </div>
     <script src="res/js/survey.js"></script>
