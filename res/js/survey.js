@@ -128,7 +128,7 @@ function sendRating(rating) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ rating: rating, token: token })
+        body: JSON.stringify({ token: token , rating: rating})
     })
     .then(response => response.json())
     .then(data => {
