@@ -110,16 +110,16 @@ function getQueryParam(param) {
 // Function to send the API request
 function sendRating(rating) {
     const token = getQueryParam('token'); // Get the token from the URL
-    const issueNumber = getQueryParam('issueNumber'); // Get the issue number from the URL
+    const issueKey= getQueryParam('issue-key'); // Get the issue number from the URL
 
     // Check if the necessary parameters are present
-    if (!token || !issueNumber) {
+    if (!token || !issueKey) {
         console.error("Required parameters are missing.");
         return;
     }
 
     // Construct the full API endpoint URL using the issue number
-    const apiUrl = `https://api.example.com/issues/${issueNumber}`;
+    const apiUrl = `https://api.example.com/issues/${issueKey}`;
 
     // Send the API request
     fetch(apiUrl, {
