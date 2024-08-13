@@ -124,6 +124,7 @@ function sendRating(rating) {
     // Send the API request
     fetch(apiUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json'
         },
