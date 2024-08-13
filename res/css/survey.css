@@ -78,7 +78,7 @@ body {
 }
 
 .rating-widget label{
-    color: black;
+    color: rgb(169, 169, 169);
     font-size: 25px;
     padding: 10px;
     float: right;

@@ -100,3 +100,51 @@ window.addEventListener('load', function() {
         }
     }
 });
+
+// Function to get URL parameters
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Function to send the API request
+function sendRating(rating) {
+    const token = getQueryParam('token'); // Get the token from the URL
+    const issueNumber = getQueryParam('issueNumber'); // Get the issue number from the URL
+
+    // Check if the necessary parameters are present
+    if (!token || !issueNumber) {
+        console.error("Required parameters are missing.");
+        return;
+    }
+
+    // Construct the full API endpoint URL using the issue number
+    const apiUrl = `https://api.example.com/issues/${issueNumber}`;
+
+    // Send the API request
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ rating: rating, token: token })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+// Attach event listeners to star ratings
+window.onload = function() {
+    const stars = document.querySelectorAll('.star-rating label');
+    stars.forEach(label => {
+        label.addEventListener('click', function() {
+            const rating = this.htmlFor.split('-')[1]; // Extract rating from the 'for' attribute
+            sendRating(rating); // Send the rating to the API
+        });
+    });
+};
