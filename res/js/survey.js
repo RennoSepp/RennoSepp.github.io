@@ -119,7 +119,7 @@ function sendRating(rating) {
     }
 
     // Construct the full API endpoint URL using the issue number
-    const apiUrl = `https://api.example.com/issues/${issueKey}`;
+    const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
 
     // Send the API request
     fetch(apiUrl, {
