@@ -1,17 +1,4 @@
-let rating = 0;
-const stars = document.querySelectorAll('.star');
-stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-        rating = index + 1;
-        updateStars();
-    });
-});
 
-function updateStars() {
-    stars.forEach((star, index) => {
-        star.style.color = index < rating ? 'purple' : 'gray';
-    });
-}
 
 function submitReview() {
     const reviewText = document.getElementById('reviewText').value;
@@ -37,7 +24,6 @@ changeBtn.onclick = ()=> {
 
 document.addEventListener('DOMContentLoaded', function() {
     const starRatings = document.querySelectorAll('.rating-widget input[type="radio"]');
-    const description = document.querySelector('.star-description');
     const mainMessage = document.querySelector('.main-message');
 
     starRatings.forEach(star => {
@@ -45,27 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const rating = this.id.split('-')[1]; // Gets the number from id like 'rate-5'
             switch (rating) {
                 case '5':
-                    description.textContent = 'If you have a moment, tell us how it went so we can keep it up!';
                     mainMessage.textContent = 'Awesome! We got it.'
                     break;
                 case '4':
-                    description.textContent = 'If you have a moment, tell us how it went so we can keep it up!';
                     mainMessage.textContent = 'Awesome! We got it.'
                     break;
                 case '3':
-                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
                     mainMessage.textContent = 'Thanks! We got it.'
                     break;
                 case '2':
-                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
                     mainMessage.textContent = 'Sorry to hear that.'
                     break;
                 case '1':
-                    description.textContent = 'If you have a moment, tell us how it went so we can do better next time.';
                     mainMessage.textContent = 'Sorry to hear that.'
                     break;
                 default:
-                    description.textContent = 'Select a rating';
             }
         });
     });
@@ -124,13 +104,17 @@ function sendRating(rating) {
     // Send the API request
     fetch(apiUrl, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ token: token , rating: rating})
+        body: JSON.stringify({ token: token, rating: rating })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         console.log('Success:', data);
     })

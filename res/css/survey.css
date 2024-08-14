@@ -79,28 +79,65 @@ body {
 
 .rating-widget label{
     color: rgb(169, 169, 169);
-    font-size: 25px;
+    font-size: 40px;
     padding: 10px;
     float: right;
 }
 
-input:not(checked) ~ label:hover,
-input:not(checked) ~ label:hover ~ label{
-    color: #7302ae;
+
+.star-rating input {
+    display: none;
 }
 
-input:checked ~ label {
-    color: #7302ae;
-}
-
-input#rate-5:checked ~ label {
-    color: #7302ae;
-    text-shadow: 0 0 5px #6c7683;
-}
-
-.fa-star:hover {
+.star-rating label {
+    font-size: 40px; /* Adjust size as needed */
+    color: #ccc; /* Default gray color */
     cursor: pointer;
+    transition: color 0.3s ease-in-out;
 }
+
+/* Hover effects: Change color for the hovered star only */
+.star-rating label[for="rate-5"]:hover {
+    color: #32CD32; /* Lime Green for 5 stars */
+}
+
+.star-rating label[for="rate-4"]:hover {
+    color: #9ACD32; /* Yellow-Green for 4 stars */
+}
+
+.star-rating label[for="rate-3"]:hover {
+    color: #FFD700; /* Gold for 3 stars */
+}
+
+.star-rating label[for="rate-2"]:hover {
+    color: #FFA500; /* Orange for 2 stars */
+}
+
+.star-rating label[for="rate-1"]:hover {
+    color: #FF5A5A; /* Bright Red for 1 star */
+}
+
+/* Keep the selected star colored */
+.star-rating input:checked + label {
+    color: #32CD32; /* Default to Lime Green for selected 5 stars */
+}
+
+.star-rating input#rate-4:checked + label {
+    color: #9ACD32; /* Yellow-Green for selected 4 stars */
+}
+
+.star-rating input#rate-3:checked + label {
+    color: #FFD700; /* Gold for selected 3 stars */
+}
+
+.star-rating input#rate-2:checked + label {
+    color: #FFA500; /* Orange for selected 2 stars */
+}
+
+.star-rating input#rate-1:checked + label {
+    color: #FF5A5A; /* Bright Red for selected 1 star */
+}
+
 
 
 form .submitBtn button{
@@ -122,16 +159,15 @@ form .submitBtn button:hover{
 }
 
 
-form .star-description{
+form .description{
     color: black;
     font-weight: 400;
-    margin: 15px 0 20px;
     width: 100%;
     text-align: center;
     transition: all 0.3s ease;
 }
 
-.star-description{
+.description{
     width: 85%;
     color: rgb(80, 80, 80);
 }
@@ -143,7 +179,7 @@ form .star-description{
 textarea {
     height: 150px;
     width: 160%;
-    margin-top: 35px;
+    margin-top: 15px;
     margin-left: -30%;  /* Pulls the element back towards the center */
     margin-right: -30%;
     resize: none;
@@ -171,6 +207,53 @@ textarea:focus {
     z-index: 1000;
 }
 
-.star-rating {
-    margin-bottom: 25px;
+.ces-question {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+    padding-bottom: 20px;
+}
+
+.radio-group label {
+    padding: 5px 10px; /* Reduce the padding to make the labels narrower */
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    width: 100px; /* Set a fixed width to narrow down the labels */
+    text-align: center; /* Center the text within the labels */
+    font-size: 14px; /* Adjust font size if necessary */
+    transition: background-color 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked.difficult + label {
+    background-color: #FF5A5A;
+    color: white;
+}
+
+input[type="radio"]:checked.average + label {
+    background-color: #FFD700;
+    color: rgb(104, 104, 104);
+}
+
+input[type="radio"]:checked.easy + label {
+    background-color: #4caf50;
+    color: white;
 }

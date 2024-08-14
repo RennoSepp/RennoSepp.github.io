@@ -7,6 +7,7 @@
     <title>Leave a Review</title>
     <link rel="stylesheet" href="res/css/survey.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
 
 <body>
@@ -23,18 +24,29 @@
             <h1 class="main-message">Please give us a rating below.</h1>
             <div class="star-rating">
                 <input type="radio" name="rate" id="rate-5">
-                <label for="rate-5" class="fas fa-star"></label>
+                <label for="rate-5"><i class="fi fi-sr-grin"></i></label>
                 <input type="radio" name="rate" id="rate-4">
-                <label for="rate-4" class="fas fa-star"></label>
+                <label for="rate-4" class="fi fi-ss-smile"><i class="fi fi-sr-smile"></i></label>
                 <input type="radio" name="rate" id="rate-3">
-                <label for="rate-3" class="fas fa-star"></label>
+                <label for="rate-3"><i class="fi fi-sr-meh"></i></label>
                 <input type="radio" name="rate" id="rate-2">
-                <label for="rate-2" class="fas fa-star"></label>
+                <label for="rate-2"><i class="fi fi-sr-sad"></i></label>
                 <input type="radio" name="rate" id="rate-1">
-                <label for="rate-1" class="fas fa-star"></label>
+                <label for="rate-1"><i class="fi fi-sr-face-disappointed"></i></label>
             </div>
-            <p class="star-description">If you have a moment, we'd also love to hear your feedback on your experience
-                with us.</p>
+            <p class="ces-question">How simple was it to get the help you needed?</p>
+            <div class="radio-group">
+                <input type="radio" id="difficult" name="rating" class="difficult">
+                <label for="difficult">Difficult</label>
+        
+                <input type="radio" id="average" name="rating" class="average">
+                <label for="average">Average</label>
+        
+                <input type="radio" id="easy" name="rating" class="easy">
+                <label for="easy">Easy</label>
+            </div>
+            
+            <p class="description">If you have a moment, tell us how it went so we can do better next time.            </p>
             <form>
                 <div>
                     <textarea cols="30" placeholder="Optional comment"></textarea>
