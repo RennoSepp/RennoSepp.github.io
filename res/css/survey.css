@@ -84,9 +84,9 @@ body {
     float: right;
 }
 
-
 .star-rating input {
     display: none;
+    
 }
 
 .star-rating label {
@@ -179,7 +179,7 @@ form .description{
 textarea {
     height: 150px;
     width: 160%;
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: -30%;  /* Pulls the element back towards the center */
     margin-right: -30%;
     resize: none;
@@ -210,10 +210,29 @@ textarea:focus {
 .ces-question {
     padding-top: 10px;
     padding-bottom: 10px;
+    color: #333;
 }
 
 
+.definitions {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    font-size: 13px;
+    margin-top: -10px;
+    padding-bottom: 15px;
+}
 
+.bad {
+    margin: 0;
+    /* Additional styles for BAD */
+}
+
+.good {
+    margin: 0;
+    /* Additional styles for GOOD */
+}
 
 
 
@@ -225,7 +244,7 @@ textarea:focus {
     justify-content: center;
     align-items: center;
     gap: 10px; 
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .radio-group label {
@@ -243,17 +262,26 @@ input[type="radio"] {
     display: none;
 }
 
-input[type="radio"]:checked.difficult + label {
+/* Hover styles for different states */
+.radio-group label:hover {
+    background-color: #32CD32;
+    color: white;
+}
+
+input[type="radio"]:checked.difficult + label,
+input[type="radio"].difficult + label:hover {
     background-color: #FF5A5A;
     color: white;
 }
 
-input[type="radio"]:checked.average + label {
+input[type="radio"]:checked.average + label,
+input[type="radio"].average + label:hover {
     background-color: #FFD700;
-    color: rgb(104, 104, 104);
+    color: black;
 }
 
-input[type="radio"]:checked.easy + label {
+input[type="radio"]:checked.easy + label,
+input[type="radio"].easy + label:hover {
     background-color: #4caf50;
     color: white;
 }
