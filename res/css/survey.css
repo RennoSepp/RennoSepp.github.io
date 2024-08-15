@@ -47,7 +47,7 @@ body {
     font-size: 25px;
     color: black;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     padding: 20px;
 }
 
@@ -85,17 +85,15 @@ body {
     float: right;
 }
 
-.star-rating {
-}
-
 .star-rating input {
     display: none;
 }
 
 .star-rating label {
-    font-size: 45px; /* Adjust size as needed */
+    font-size: 50px; /* Adjust size as needed */
     color: #ccc; /* Default gray color */
     cursor: pointer;
+    padding: 20px;
     transition: color 0.3s ease-in-out;
 }
 
