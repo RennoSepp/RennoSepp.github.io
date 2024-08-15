@@ -215,6 +215,12 @@ textarea:focus {
     z-index: 1000;
 }
 
+@media (max-width: 800px) {  /* Adjust 600px to your desired threshold */
+    .logo-image {
+        display: none;
+    }
+}
+
 .ces-question {
     padding-top: 30px;
     padding-bottom: 20px;
