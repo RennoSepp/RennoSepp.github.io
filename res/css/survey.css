@@ -41,13 +41,15 @@ body {
     border-radius: 24px;
     flex-direction: column;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .review-container .text{
     font-size: 25px;
     color: black;
     font-weight: 700;
-    letter-spacing: 2px;
+
     padding: 20px;
 }
 
@@ -93,7 +95,7 @@ body {
     font-size: 50px; /* Adjust size as needed */
     color: #ccc; /* Default gray color */
     cursor: pointer;
-    padding: 20px;
+    padding: 10px;
     transition: color 0.3s ease-in-out;
 }
 
@@ -151,13 +153,14 @@ form .submitBtn button{
     color: white;
     font-weight: 00;
     margin-top: 25px;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 550;
     cursor: pointer;
     transition: all 0.1s ease;
     border-radius: 8px;
     border: 1px;
     border-color: #4e148c;
+    height: 40px;
 }
 
 form .submitBtn button:hover{
@@ -195,7 +198,6 @@ textarea {
     background-color: #FAFBFC;
     padding: 10px;
     font-size: 14px;
-    flex-grow: 2;
 }
 
 textarea:focus {
@@ -208,8 +210,8 @@ textarea:focus {
 
 .logo-image {
     position: fixed;
-    top: 5px;
-    left: 5px;
+    top: 25px;
+    left: 25px;
     width: 95px;
     height: auto;
     z-index: 1000;
@@ -224,13 +226,14 @@ textarea:focus {
 
 
 .definitions {
-    width: 85%;
+    width: 83%;
     display: flex;
     justify-content: space-between;
     color: #333;
-    font-size: 13px;
-    margin-top: -15px;
+    font-size: 11px;
+    margin-top: -10px;
     padding-bottom: 25px;
+    margin-right: 5px;
 }
 
 .bad {
@@ -255,11 +258,12 @@ textarea:focus {
     padding: 5px 10px; /* Reduce the padding to make the labels narrower */
     border: solid;
     border-color:#7302ae;
-    border-width: 2px;
+    border-width: 1px;
     color:#7302ae;
     border-radius: 5px;
     cursor: pointer;
     background-color: white;
+    height: 40px;
     width: 100px; /* Set a fixed width to narrow down the labels */
     text-align: center; /* Center the text within the labels */
     font-size: 14px; /* Adjust font size if necessary */
