@@ -179,7 +179,7 @@ form .description{
     font-size: 18px;
     width: 85%;
     color: rgb(80, 80, 80);
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .feedback-text {
@@ -245,24 +245,23 @@ textarea:focus {
     /* Additional styles for GOOD */
 }
 
-
-
-
-
-
 .radio-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; 
+    gap: 28px; 
     padding-bottom: 50px;
 }
 
 .radio-group label {
     padding: 5px 10px; /* Reduce the padding to make the labels narrower */
+    border: solid;
+    border-color:#7302ae;
+    border-width: 2px;
+    color:#7302ae;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #f0f0f0;
+    background-color: white;
     width: 100px; /* Set a fixed width to narrow down the labels */
     text-align: center; /* Center the text within the labels */
     font-size: 14px; /* Adjust font size if necessary */
@@ -272,6 +271,8 @@ textarea:focus {
 input[type="radio"] {
     display: none;
 }
+
+
 
 /* Hover styles for different states */
 .radio-group label:hover {
