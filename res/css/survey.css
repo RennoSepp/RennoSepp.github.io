@@ -2,14 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Gilroy, Arial, sans-serif;
+    font-family: sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Gilroy, Arial, sans-serif;
+    font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,11 +19,11 @@ body {
 }
 
 .main-message{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: normal;
     line-height: 1.5;
     text-transform: none;
-    margin: 10px 0 20px 0;
+    margin: 20px 0 20px 0;
     padding: 0;
     letter-spacing: -0.008em;
     color: #333;
@@ -37,7 +37,7 @@ body {
     align-items: center;
     padding: 15px;
     padding-top: 30px;
-    padding-bottom: 40px;
+    padding-bottom: 55px;
     border-radius: 24px;
     flex-direction: column;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -48,6 +48,7 @@ body {
     color: black;
     font-weight: 700;
     letter-spacing: 3px;
+    padding: 20px;
 }
 
 .review-container .change{
@@ -80,17 +81,19 @@ body {
 .rating-widget label{
     color: rgb(169, 169, 169);
     font-size: 40px;
-    padding: 10px;
+    padding: 20px;
     float: right;
+}
+
+.star-rating {
 }
 
 .star-rating input {
     display: none;
-    
 }
 
 .star-rating label {
-    font-size: 40px; /* Adjust size as needed */
+    font-size: 45px; /* Adjust size as needed */
     color: #ccc; /* Default gray color */
     cursor: pointer;
     transition: color 0.3s ease-in-out;
@@ -128,6 +131,8 @@ body {
 
 .star-rating input#rate-3:checked + label {
     color: #FFD700; /* Gold for selected 3 stars */
+    border-radius: 5px;
+    border-color: #FFD700;
 }
 
 .star-rating input#rate-2:checked + label {
@@ -141,17 +146,20 @@ body {
 
 
 form .submitBtn button{
-    width: 50%;
+
+    width: 100%;
     height: 30px;
-    margin: 20px 0;
     background-color: #7302ae;
     color: white;
+    font-weight: 00;
+    margin-top: 25px;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 550;
     cursor: pointer;
     transition: all 0.1s ease;
-    border-radius: 5px;
+    border-radius: 8px;
     border: 1px;
+    border-color: #4e148c;
 }
 
 form .submitBtn button:hover{
@@ -168,8 +176,10 @@ form .description{
 }
 
 .description{
+    font-size: 18px;
     width: 85%;
     color: rgb(80, 80, 80);
+    padding-bottom: 15px;
 }
 
 .feedback-text {
@@ -178,12 +188,12 @@ form .description{
 
 textarea {
     height: 150px;
-    width: 160%;
+    width: 145%;
     margin-top: 10px;
     margin-left: -30%;  /* Pulls the element back towards the center */
     margin-right: -30%;
     resize: none;
-    border: 1px solid #DFE1E6;
+    border: 2px solid #b6b6b6;
     background-color: #FAFBFC;
     padding: 10px;
     font-size: 14px;
@@ -208,20 +218,21 @@ textarea:focus {
 }
 
 .ces-question {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 18px;
     color: #333;
 }
 
 
 .definitions {
-    width: 70%;
+    width: 85%;
     display: flex;
     justify-content: space-between;
     color: #333;
     font-size: 13px;
-    margin-top: -10px;
-    padding-bottom: 15px;
+    margin-top: -15px;
+    padding-bottom: 25px;
 }
 
 .bad {
@@ -244,7 +255,7 @@ textarea:focus {
     justify-content: center;
     align-items: center;
     gap: 10px; 
-    padding-bottom: 25px;
+    padding-bottom: 50px;
 }
 
 .radio-group label {
@@ -270,18 +281,18 @@ input[type="radio"] {
 
 input[type="radio"]:checked.difficult + label,
 input[type="radio"].difficult + label:hover {
-    background-color: #FF5A5A;
+    background-color: #7302ae;
     color: white;
 }
 
 input[type="radio"]:checked.average + label,
 input[type="radio"].average + label:hover {
-    background-color: #FFD700;
-    color: black;
+    background-color: #7302ae;
+    color: white;
 }
 
 input[type="radio"]:checked.easy + label,
 input[type="radio"].easy + label:hover {
-    background-color: #4caf50;
+    background-color: #7302ae;
     color: white;
 }
