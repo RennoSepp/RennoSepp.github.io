@@ -23,7 +23,7 @@ body {
     font-weight: normal;
     line-height: 1.5;
     text-transform: none;
-    margin: 20px 0 20px 0;
+    margin: 10px 0 10px 0;
     padding: 0;
     letter-spacing: -0.008em;
     color: #333;
@@ -186,7 +186,7 @@ form .description{
 }
 
 textarea {
-    height: 150px;
+    height: 120px;
     width: 145%;
     margin-top: 10px;
     margin-left: -30%;  /* Pulls the element back towards the center */
@@ -255,7 +255,7 @@ textarea:focus {
     justify-content: center;
     align-items: center;
     gap: 28px; 
-    padding-bottom: 50px;
+    padding-bottom: 45px;
 }
 
 .radio-group label {
