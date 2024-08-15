@@ -28,21 +28,19 @@ body {
     letter-spacing: -0.008em;
     color: #333;
 }
-
 .review-container {
     background-color: white;
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    padding-top: 30px;
-    padding-bottom: 55px;
+    width: 100%;             /* 100% width of the parent container */
+    max-width: 500px;        /* Maximum width of 500px */
+    min-width: 300px;        /* Minimum width of 300px for smaller screens */
+    max-height: 90vh;        /* Allow the container to take up 90% of the viewport height */
+    overflow-y: auto;        /* Enable vertical scrolling if content exceeds height */
+    padding: 30px 15px 55px;
     border-radius: 24px;
     flex-direction: column;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    margin-top: 20px;
-    margin-bottom: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    position: relative;
 }
 
 .review-container .text{
@@ -274,6 +272,9 @@ input[type="radio"] {
     display: none;
 }
 
+.radio-group label{
+    align-content: center;
+}
 
 
 /* Hover styles for different states */
