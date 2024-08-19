@@ -123,8 +123,37 @@ function sendRating(rating) {
     });
 }
 
-// Attach event listeners to star ratings
+function sendCesRating(starRating, radioButtonValue) {
+    const data = {
+        token: token,
+        rating: starRating,
+        comment: radioButtonValue
+    };
+  
+    fetch('https://your-api-endpoint.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+  
+
+function getSelectedStarRating() {
+    const starRating = document.querySelector('input[name="rate"]:checked');
+    return starRating ? starRating.value : null;
+}
+
 window.onload = function() {
+    // Attach event listeners to star ratings
     const stars = document.querySelectorAll('.star-rating label');
     stars.forEach(label => {
         label.addEventListener('click', function() {
@@ -132,4 +161,16 @@ window.onload = function() {
             sendRating(rating); // Send the rating to the API
         });
     });
-};
+    // Attach event listeners to CES ratings
+    document.querySelectorAll('.radio-group input[type="radio"]').forEach((radioButton) => {
+        radioButton.addEventListener('click', () => {
+          const starRating = getSelectedStarRating();
+          const radioButtonValue = radioButton.value;
+          if (starRating) {
+            sendApiRequest(starRating, radioButtonValue);
+          } else {
+            console.log('Please select a star rating first.');
+          }
+        });
+      });
+}
