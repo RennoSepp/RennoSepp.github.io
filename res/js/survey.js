@@ -130,7 +130,7 @@ function sendCesRating(starRating, radioButtonValue) {
         comment: radioButtonValue
     };
   
-    fetch('https://your-api-endpoint.com/submit', {
+    fetch('https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
