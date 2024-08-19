@@ -154,8 +154,9 @@ function sendCesRating(starRating, radioButtonValue) {
 
 function getSelectedStarRating() {
     const starRating = document.querySelector('input[name="rate"]:checked');
-    print(starRating);
-    return starRating ? starRating.htmlFor.split('-')[1]: null;
+    console.log("wanna have fun");
+    console.log(starRating);
+    return starRating.className.split('-')[1];
 }
 
 window.onload = function() {
