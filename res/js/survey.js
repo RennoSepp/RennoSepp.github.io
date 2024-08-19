@@ -126,6 +126,10 @@ function sendRating(rating) {
 function sendCesRating(starRating, radioButtonValue) {
     const token = getQueryParam('token'); // Get the token from the URL
     const issueKey= getQueryParam('issue-key');
+    if (!token || !issueKey) {
+        console.error("Required parameters are missing.");
+        return;
+    }
     const data = {
         token: token,
         rating: starRating,
@@ -154,9 +158,7 @@ function sendCesRating(starRating, radioButtonValue) {
 
 function getSelectedStarRating() {
     const starRating = document.querySelector('input[name="rate"]:checked');
-    console.log("wanna have fun");
-    console.log(starRating);
-    return starRating.className.split('-')[1];
+    return starRating.id.split('-')[1];
 }
 
 window.onload = function() {
