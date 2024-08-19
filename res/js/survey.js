@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        comment = cesRating + "\n" + comment;
+        comment = cesRating + ": " + comment;
 
         console.log(comment)
 
