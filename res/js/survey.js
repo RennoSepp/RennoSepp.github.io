@@ -154,7 +154,7 @@ function sendCesRating(starRating, radioButtonValue) {
 
 function getSelectedStarRating() {
     const starRating = document.querySelector('input[name="rate"]:checked');
-    return starRating ? starRating.value : null;
+    return starRating ? starRating.htmlFor.split('-')[1]: null;
 }
 
 window.onload = function() {
@@ -170,7 +170,7 @@ window.onload = function() {
     document.querySelectorAll('.radio-group input[type="radio"]').forEach((radioButton) => {
         radioButton.addEventListener('click', () => {
           const starRating = getSelectedStarRating();
-          const radioButtonValue = radioButton.value;
+          const radioButtonValue = radioButton.className;
           if (starRating) {
             sendCesRating(starRating, radioButtonValue);
           } else {
