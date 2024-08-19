@@ -182,4 +182,195 @@ window.onload = function() {
           }
         });
       });
+
+      document.addEventListener('DOMContentLoaded', function() {
+    const submitBtn = document.querySelector(".submitBtn button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".rating-widget");
+    const changeBtn = document.querySelector(".change");
+
+    function submitReview(event) {
+        event.preventDefault(); // Prevent form from submitting the traditional way
+
+        // Get the selected star rating
+        const starRatingInput = document.querySelector('input[name="rate"]:checked');
+        const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
+
+        // Get the selected radio button for CES
+        const cesRatingInput = document.querySelector('.radio-group input[name="rating"]:checked');
+        const cesRating = cesRatingInput ? cesRatingInput.className : null;
+
+        // Get the text from the comment box
+        const commentText = document.getElementById('commentText').value;
+
+        // Log the gathered inputs
+        console.log('Star Rating:', starRating);
+        console.log('CES Rating:', cesRating);
+        console.log('Comment:', commentText);
+
+        // Check if all required inputs are present
+        if (starRating && cesRating) {
+            sendCesRating(starRating, cesRating, commentText); // Send the data to the API
+        } else {
+            console.log('Please make sure all required inputs are filled.');
+        }
+
+        // Show the post-feedback message
+        widget.style.display = "none";
+        post.style.display = "block";
+    }
+
+    // Function to send the combined rating and comment to the API
+    function sendCesRating(starRating, cesRating, comment) {
+        const token = getQueryParam('token'); // Get the token from the URL
+        const issueKey = getQueryParam('issue-key');
+        
+        if (!token || !issueKey) {
+            console.error("Required parameters are missing.");
+            return;
+        }
+
+        const data = {
+            token: token,
+            rating: starRating,
+            cesRating: cesRating,
+            comment: comment
+        };
+
+        const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Attach the event listener to the submit button
+    submitBtn.addEventListener('click', submitReview);
+
+    // Handle change of feedback form
+    changeBtn.onclick = () => {
+        widget.style.display = "block";
+        post.style.display = "none";
+    };
+});
+
+// Utility function to get query parameters from the URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const submitBtn = document.querySelector(".submitBtn button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".rating-widget");
+    const changeBtn = document.querySelector(".change");
+
+    function submitReview(event) {
+        event.preventDefault(); // Prevent form from submitting the traditional way
+
+        // Get the selected star rating
+        const starRatingInput = document.querySelector('input[name="rate"]:checked');
+        const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
+
+        // Get the selected radio button for CES
+        const cesRatingInput = document.querySelector('.radio-group input[name="rating"]:checked');
+        const cesRating = cesRatingInput ? cesRatingInput.className : null;
+
+        // Get the text from the comment box
+        const commentText = document.getElementById('commentText').value;
+
+        // Log the gathered inputs
+        console.log('Star Rating:', starRating);
+        console.log('CES Rating:', cesRating);
+        console.log('Comment:', commentText);
+
+        // Check if all required inputs are present
+        if (starRating && cesRating) {
+            sendCesRating(starRating, cesRating, commentText); // Send the data to the API
+        } else {
+            console.log('Please make sure all required inputs are filled.');
+        }
+
+        // Show the post-feedback message
+        widget.style.display = "none";
+        post.style.display = "block";
+    }
+
+    // Function to send the combined rating and comment to the API
+    function sendCesRating(starRating, cesRating, comment) {
+        const token = getQueryParam('token'); // Get the token from the URL
+        const issueKey = getQueryParam('issue-key');
+        
+        if (!token || !issueKey) {
+            console.error("Required parameters are missing.");
+            return;
+        }
+
+        const comment = cesRating + "\n" + comment;
+
+        console.log(comment)
+
+        const data = {
+            token: token,
+            rating: starRating,
+            comment: comment
+        };
+
+        const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Attach the event listener to the submit button
+    submitBtn.addEventListener('click', submitReview);
+
+    // Handle change of feedback form
+    changeBtn.onclick = () => {
+        widget.style.display = "block";
+        post.style.display = "none";
+    };
+});
+
+// Utility function to get query parameters from the URL
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
