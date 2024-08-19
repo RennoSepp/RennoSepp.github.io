@@ -131,8 +131,11 @@ function sendCesRating(starRating, radioButtonValue) {
         rating: starRating,
         comment: radioButtonValue
     };
+
+    const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
+
   
-    fetch('https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}', {
+    fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
