@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const widget = document.querySelector(".rating-widget");
     const changeBtn = document.querySelector(".change");
     const mainMessage = document.querySelector('.main-message');
+    let initialRequestSent = false; // Flag to prevent double API requests
+    let lastSelectedCesRating = null; // To track the last selected CES rating
 
     // Function to get URL parameters
     function getQueryParam(param) {
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to send the combined rating and comment to the API
-    function sendCesRating(starRating, cesRating, comment) {
+    function sendCesRating(starRating, cesRating = null, comment = '') {
         const token = getQueryParam('token');
         const issueKey = getQueryParam('issue-key');
 
@@ -21,12 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        comment = cesRating ? `${cesRating}: ${comment}` : comment;
-
         const data = {
             token: token,
             rating: starRating,
-            comment: comment
+            comment: cesRating ? `${cesRating}: ${comment}` : comment
         };
 
         const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
@@ -38,18 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     }
 
     // Function to handle the review submission
@@ -58,19 +58,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
-        const cesRatingInput = document.querySelector('.radio-group input[name="rating"]:checked');
-        const cesRating = cesRatingInput ? cesRatingInput.className : null;
         const commentText = document.getElementById('commentText').value;
 
         if (starRating) {
-            sendCesRating(starRating, cesRating, commentText);
-            updateMainMessage(starRating); // Update the main message based on star rating
+            sendCesRating(starRating, lastSelectedCesRating, commentText);
+            updateMainMessage(starRating);
+
+            // Show the post-feedback message
+            widget.style.display = "none";
+            post.style.display = "block";
         } else {
             console.log('Please select a star rating.');
         }
-
-        widget.style.display = "none";
-        post.style.display = "block";
     }
 
     // Function to update the main message based on star rating
@@ -92,21 +91,60 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Auto-select rating based on URL parameter
-    function autoSelectRating() {
-        let rating = getQueryParam('rating');
+    // Auto-select rating based on URL parameter and send the initial API request
+    function autoSelectAndSendInitialRating() {
+        const rating = getQueryParam('rating');
         if (rating && rating >= 1 && rating <= 5) {
             const ratingId = 'rate-' + rating;
             const ratingInput = document.getElementById(ratingId);
             if (ratingInput) {
                 ratingInput.checked = true;
                 updateMainMessage(rating);
+
+                // Only send the initial API request if no other request has been made
+                if (!initialRequestSent) {
+                    sendCesRating(rating); // Send the initial rating without CES or comment
+                    initialRequestSent = true; // Mark that the initial request has been sent
+                }
             }
         }
     }
 
-    // Auto-select rating when the page loads
-    autoSelectRating();
+    // Attach event listeners to star ratings
+    const stars = document.querySelectorAll('.star-rating input[type="radio"]');
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            const rating = this.id.split('-')[1];
+
+            // Prevent double API requests if the initial request was already sent
+            if (!initialRequestSent) {
+                initialRequestSent = true;
+            } else {
+                // Include the last selected CES rating in the API request
+                sendCesRating(rating, lastSelectedCesRating);
+            }
+
+            updateMainMessage(rating); // Update the main message
+        });
+    });
+
+    // Attach event listeners to CES ratings
+    const cesOptions = document.querySelectorAll('.radio-group input[type="radio"]');
+    cesOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            const starRatingInput = document.querySelector('input[name="rate"]:checked');
+            const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
+            lastSelectedCesRating = this.id; // Store the selected CES rating
+            if (starRating) {
+                sendCesRating(starRating, lastSelectedCesRating); // Send star and CES rating with no comment
+            } else {
+                console.log('Please select a star rating first.');
+            }
+        });
+    });
+
+    // Send the initial API request on page load
+    autoSelectAndSendInitialRating();
 
     // Attach the event listener to the submit button
     submitBtn.addEventListener('click', submitReview);
