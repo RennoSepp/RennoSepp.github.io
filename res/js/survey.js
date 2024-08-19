@@ -124,6 +124,8 @@ function sendRating(rating) {
 }
 
 function sendCesRating(starRating, radioButtonValue) {
+    const token = getQueryParam('token'); // Get the token from the URL
+    const issueKey= getQueryParam('issue-key');
     const data = {
         token: token,
         rating: starRating,
