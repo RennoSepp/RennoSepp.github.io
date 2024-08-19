@@ -167,7 +167,7 @@ window.onload = function() {
           const starRating = getSelectedStarRating();
           const radioButtonValue = radioButton.value;
           if (starRating) {
-            sendApiRequest(starRating, radioButtonValue);
+            sendCesRating(starRating, radioButtonValue);
           } else {
             console.log('Please select a star rating first.');
           }
