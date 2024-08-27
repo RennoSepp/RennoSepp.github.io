@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review</title>
+    <link rel="stylesheet" href="res/css/email.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+</head>
+
+<body>
+    <a href="https://glia.atlassian.net/servicedesk/customer/portals">
+        <img class="logo-image"
+            src="res/images/glia-logo.png" alt="Glia Logo" width="600" height="400">
+    </a>
+    <div class="review-container">
+        <div class="post">
+            <div class="text">Feedback submitted.</div>
+            Thank you for your partnership!
+            <div class="change"></div>
+        </div>
+        <div class="rating-widget">
+            <h1 class="main-message">Please give us a rating below.</h1>
+            <div class="star-rating">
+                <input type="radio" name="rate" id="rate-5">
+                <label for="rate-5"><i class="fi fi-sr-grin-stars"></i></label>
+                <input type="radio" name="rate" id="rate-4">
+                <label for="rate-4" class="fi fi-ss-smile"><i class="fi fi-sr-grin"></i></i></label>
+                <input type="radio" name="rate" id="rate-3">
+                <label for="rate-3"><i class="fi fi-sr-meh"></i></label>
+                <input type="radio" name="rate" id="rate-2">
+                <label for="rate-2"><i class="fi fi-sr-sad"></i></label>
+                <input type="radio" name="rate" id="rate-1">
+                <label for="rate-1"><i class="fi fi-sr-face-disappointed"></i></label>
+            </div>
+            <div class="definitions">
+                <b class="bad">Very Dissatisfied</b>
+                <b class="good">Very Satisfied</b>
+            </div>
+            <p class="ces-question"><b>How easy did Glia make it for you to handle your issue?</b></p>
+            <div class="radio-group">
+                <input type="radio" id="difficult" name="rating" class="difficult">
+                <label for="difficult">Difficult</label>
+        
+                <input type="radio" id="average" name="rating" class="average">
+                <label for="average">Average</label>
+
+                <input type="radio" id="easy" name="rating" class="easy">
+                <label for="easy">Easy</label>
+            </div>
+            
+            <p class="description"><b>Any comments?</b></p>
+            <form>
+                <div>
+                    <textarea id="commentText" cols="30" placeholder="Optional comment"></textarea>
+                </div>
+                <div class="submitBtn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="res/js/survey.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #7302ae 0%, #7302ae 350px, white 350px, white 100%);
+}
+
+.main-message{
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.5;
+    text-transform: none;
+    margin: 10px 0 10px 0;
+    padding: 0;
+    letter-spacing: -0.008em;
+    color: #333;
+}
+.review-container {
+    background-color: white;
+    width: 100%;             /* 100% width of the parent container */
+    max-width: 500px;        /* Maximum width of 500px */
+    min-width: 380px;        /* Minimum width of 300px for smaller screens */
+    max-height: 90vh;        /* Allow the container to take up 90% of the viewport height */
+    overflow-y: auto;        /* Enable vertical scrolling if content exceeds height */
+    padding: 30px 15px 55px;
+    border-radius: 24px;
+    flex-direction: column;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    position: relative;
+}
+
+.review-container .text{
+    font-size: 25px;
+    color: black;
+    font-weight: 700;
+
+    padding: 20px;
+}
+
+.review-container .change{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.review-container .post {
+    display: none;
+}
+
+.review-container .rating-widget input{
+    display: none;
+}
+
+.rating-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.rating-widget label{
+    color: rgb(169, 169, 169);
+    font-size: 40px;
+    padding: 20px;
+    float: right;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 50px; /* Adjust size as needed */
+    color: #ccc; /* Default gray color */
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover effects: Change color for the hovered star only */
+.star-rating label[for="rate-5"] {
+    color: #32CD32; /* Lime Green for 5 stars */
+}
+
+.star-rating label[for="rate-4"] {
+    color: #9ACD32; /* Yellow-Green for 4 stars */
+}
+
+.star-rating label[for="rate-3"] {
+    color: #FFD700; /* Gold for 3 stars */
+}
+
+.star-rating label[for="rate-2"] {
+    color: #FFA500; /* Orange for 2 stars */
+}
+
+.star-rating label[for="rate-1"] {
+    color: #FF5A5A; /* Bright Red for 1 star */
+}
+
+/* Keep the selected star colored */
+.star-rating input:checked + label {
+    color: #32CD32; /* Default to Lime Green for selected 5 stars */
+}
+
+.star-rating input#rate-4:checked + label {
+    color: #9ACD32; /* Yellow-Green for selected 4 stars */
+}
+
+.star-rating input#rate-3:checked + label {
+    color: #FFD700; /* Gold for selected 3 stars */
+    border-radius: 5px;
+    border-color: #FFD700;
+}
+
+.star-rating input#rate-2:checked + label {
+    color: #FFA500; /* Orange for selected 2 stars */
+}
+
+.star-rating input#rate-1:checked + label {
+    color: #FF5A5A; /* Bright Red for selected 1 star */
+}
+
+
+
+form .submitBtn button{
+
+    width: 100%;
+    height: 30px;
+    background-color: #7302ae;
+    color: white;
+    font-weight: 00;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 8px;
+    border: 1px;
+    border-color: #4e148c;
+    height: 40px;
+}
+
+form .submitBtn button:hover{
+    background-color: #4e148c;
+}
+
+
+form .description{
+    color: black;
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.description{
+    font-size: 18px;
+    width: 85%;
+    color: rgb(80, 80, 80);
+    padding-bottom: 10px;
+}
+
+.feedback-text {
+    color: rgb(80, 80, 80)3;
+}
+
+textarea {
+    height: 120px;
+    width: 145%;
+    margin-top: 10px;
+    margin-left: -30%;  /* Pulls the element back towards the center */
+    margin-right: -30%;
+    resize: none;
+    border: 2px solid #b6b6b6;
+    background-color: #FAFBFC;
+    padding: 10px;
+    font-size: 14px;
+}
+
+textarea:focus {
+    outline: none !important;
+    background-color: white;
+    border-color: #4e148c;
+    box-shadow: 0 0 3px #4e148c;
+    transition: all 0.5s ease;
+}
+
+.logo-image {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 95px;
+    height: auto;
+    z-index: 1000;
+}
+
+@media (max-width: 800px) {  /* Adjust 600px to your desired threshold */
+    .logo-image {
+        display: none;
+    }
+}
+
+.ces-question {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+
+.definitions {
+    width: 83%;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    font-size: 11px;
+    margin-top: -10px;
+    padding-bottom: 25px;
+    margin-right: 5px;
+}
+
+.bad {
+    margin: 0;
+    /* Additional styles for BAD */
+}
+
+.good {
+    margin: 0;
+    /* Additional styles for GOOD */
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px; 
+    padding-bottom: 45px;
+}
+
+.radio-group label {
+    padding: 5px 10px; /* Reduce the padding to make the labels narrower */
+    border: solid;
+    border-color:#7302ae;
+    border-width: 1px;
+    color:#7302ae;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    height: 40px;
+    width: 100px; /* Set a fixed width to narrow down the labels */
+    text-align: center; /* Center the text within the labels */
+    font-size: 14px; /* Adjust font size if necessary */
+    transition: background-color 0.3s ease;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.radio-group label{
+    align-content: center;
+}
+
+
+/* Hover styles for different states */
+.radio-group label:hover {
+    background-color: #32CD32;
+    color: white;
+}
+
+input[type="radio"]:checked.difficult + label,
+input[type="radio"].difficult + label:hover {
+    background-color: #7302ae;
+    color: white;
+}
+
+input[type="radio"]:checked.average + label,
+input[type="radio"].average + label:hover {
+    background-color: #7302ae;
+    color: white;
+}
+
+input[type="radio"]:checked.easy + label,
+input[type="radio"].easy + label:hover {
+    background-color: #7302ae;
+    color: white;
+}
