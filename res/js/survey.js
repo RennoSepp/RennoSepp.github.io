@@ -82,7 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
             // Send data to Google Apps Script
             fetch('https://script.google.com/macros/s/AKfycbxBCrYVoByMBxFgwFuDyWADfaAnA8bdHhomPyFR97gnLgoXrmeZVgJxAYryXA4BF7EM/exec', {  // Replace with your Apps Script URL
+
+                redirect: "follow",
                 method: 'POST',
+                mode: 'no-cors',
                 body: JSON.stringify(formData),  // Convert the form data into a JSON string
                 headers: {
                     'Content-Type': 'application/json'  // Tell the server to expect JSON
