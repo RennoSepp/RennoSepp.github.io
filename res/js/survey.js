@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
     
             // Send data to Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbzl284J5Mm6NN9lszGa5WrBey3q0zGuf04IfCQRjEifwQ0R37ErhWMRlFGFK5Ed8G0x/exec', {  // Replace with your Apps Script URL
+            fetch('https://script.google.com/macros/s/AKfycbyflRs61PUUDLegyQMoDtotaBdXkzJn_Y_yoczT9DBwib1FmkyOUInpJhvZuT9cVRx0/exec', {  // Replace with your Apps Script URL
                 method: 'POST',
                 body: JSON.stringify(formData),  // Convert the form data into a JSON string
                 headers: {
