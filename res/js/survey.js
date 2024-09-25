@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let initialRequestSent = false; // Flag to prevent double API requests
     let lastSelectedCesRating = null; // To track the last selected CES rating
 
-    // Function to get URL parameters
+/*     // Function to get URL parameters
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
@@ -50,7 +50,49 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch((error) => {
             console.error('Error:', error);
         });
-    }
+    } */
+
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        // Function to send the combined rating and comment to the API
+        function sendCesRating(starRating, cesRating = null, comment = '') {
+            const token = getQueryParam('token');
+            const issueKey = getQueryParam('issue-key');
+    
+            if (!token || !ticketCode || !starRating || !cesRating) {
+                console.error("Missing required parameters.");
+                return;
+            }
+
+            const formData = {
+                token: token,
+                ticketCode: issueKey,
+                csatRating: starRating,
+                cesRating: cesRating,
+                comment: comment
+            };
+    
+            // Send data to Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbyBHMcFOz5Hix5B8grZyBelBHP7WNRgO8IVBdautvKl-kVFA_PfpQJqfpP3LQ3dwHfN/exec', {  // Replace with your Apps Script URL
+                method: 'POST',
+                body: JSON.stringify(formData),  // Convert the form data into a JSON string
+                headers: {
+                    'Content-Type': 'application/json'  // Tell the server to expect JSON
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Success: ' + data);  // Show a success message
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error: ' + error);  // Show an error message
+            });
+        }
 
     // Function to handle the review submission
     function submitReview(event) {
@@ -154,4 +196,35 @@ document.addEventListener('DOMContentLoaded', function () {
         widget.style.display = "block";
         post.style.display = "none";
     };
+
+    const form = document.getElementById('csatForm');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = {
+          ticketCode: document.getElementById('ticketCode').value,
+          csatRating: document.getElementById('csatRating').value,
+          comment: document.getElementById('comment').value
+        };
+
+        // Send data to Google Apps Script
+        fetch('YOUR_GOOGLE_SCRIPT_WEB_APP_URL', {  // Replace with your Apps Script URL
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert('Success: ' + data);  // Show a success message
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error: ' + error);  // Show an error message
+        });
+      });
+      
 });
