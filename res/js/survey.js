@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Function to send the combined rating and comment to the API
         function sendCesRating(starRating, cesRating = null, comment = '') {
             const token = getQueryParam('token');
-            const issueKey = getQueryParam('issue-key');
+            const ticketCode = getQueryParam('issue-key');
     
             if (!token || !ticketCode || !starRating || !cesRating) {
                 console.error("Missing required parameters.");
