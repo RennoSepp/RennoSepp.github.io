@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const formData = {
                 token: token,
-                ticketCode: issueKey,
+                ticketCode: ticketCode,
                 csatRating: starRating,
                 cesRating: cesRating,
                 comment: comment
