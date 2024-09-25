@@ -62,6 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
         function sendCesRating(starRating, cesRating = null, comment = '') {
             const token = getQueryParam('token');
             const ticketCode = getQueryParam('issue-key');
+            console.log(token);
+            console.log(ticketCode);
+            console.log(starRating);
+            console.log(cesRating);
     
             if (!token || !ticketCode || !starRating || !cesRating) {
                 console.error("Missing required parameters.");
