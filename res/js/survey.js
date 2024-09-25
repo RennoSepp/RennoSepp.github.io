@@ -196,35 +196,5 @@ document.addEventListener('DOMContentLoaded', function () {
         widget.style.display = "block";
         post.style.display = "none";
     };
-
-    const form = document.getElementById('csatForm');
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = {
-          ticketCode: document.getElementById('ticketCode').value,
-          csatRating: document.getElementById('csatRating').value,
-          comment: document.getElementById('comment').value
-        };
-
-        // Send data to Google Apps Script
-        fetch('YOUR_GOOGLE_SCRIPT_WEB_APP_URL', {  // Replace with your Apps Script URL
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => response.text())
-        .then(data => {
-          alert('Success: ' + data);  // Show a success message
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Error: ' + error);  // Show an error message
-        });
-      });
       
 });
