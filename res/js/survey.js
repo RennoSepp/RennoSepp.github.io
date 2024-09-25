@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 mode: 'no-cors',
                 body: JSON.stringify(formData),  // Convert the form data into a JSON string
                 headers: {
-                    'Content-Type': 'application/json'  // Tell the server to expect JSON
+                    'Content-Type': 'text/plain;charset=utf-8'  // Tell the server to expect JSON
                 }
             })
             .then(response => response.text())
