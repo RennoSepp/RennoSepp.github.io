@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(starRating);
             console.log(cesRating);
     
-            if (!token || !ticketCode || !starRating || !cesRating) {
+            if (!token || !ticketCode || !starRating) {
                 console.error("Missing required parameters.");
                 return;
             }
