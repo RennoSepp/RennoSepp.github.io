@@ -92,9 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .then(response => response.text())
-            .then(data => {
-                alert('Success: ' + data);  // Show a success message
-            })
             .catch((error) => {
                 console.error('Error:', error);
                 alert('Error: ' + error);  // Show an error message
