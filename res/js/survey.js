@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const webpageSubmission = false;
     const userAgent = navigator.userAgent;
     const submitBtn = document.querySelector(".submitBtn button");
     const post = document.querySelector(".post");
@@ -29,11 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
             csatRating: starRating,
             cesRating: cesRating,
             comment: comment,
-            userAgent: userAgent
+            userAgent: userAgent,
+            webpageSubmission: webpageSubmission 
         };
 
         // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbypn5wuUN3CFIJ1WnKlu9gFaU58OG-AUjfO5Zh74JAa-2hHcqrY6uj0org9P0FHF-Qv/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzrxspBl-AToAxuJsj-g3V7oPCKs3gWUNJ7-KYho4NKjeEhtFjWO-Hfoe6OJrk8Sd6d/exec', {
 
             redirect: "follow",
             method: 'POST',
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle the review submission
     function submitReview(event) {
         event.preventDefault();
-        console.log(userAgent)
+        webpageSubmission = true
 
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
@@ -112,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.star-rating input[type="radio"]');
     stars.forEach(star => {
         star.addEventListener('click', function () {
+            webpageSubmission = true
             const rating = this.id.split('-')[1];
 
             // Prevent double API requests if the initial request was already sent
@@ -129,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach event listeners to CES ratings
     const cesOptions = document.querySelectorAll('.radio-group input[type="radio"]');
     cesOptions.forEach(option => {
+        webpageSubmission = true
         option.addEventListener('click', function () {
             const starRatingInput = document.querySelector('input[name="rate"]:checked');
             const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
