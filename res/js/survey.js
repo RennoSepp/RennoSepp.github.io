@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const webpageSubmission = false;
+    const webpageSubmission = "false";
     const userAgent = navigator.userAgent;
     const submitBtn = document.querySelector(".submitBtn button");
     const post = document.querySelector(".post");
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle the review submission
     function submitReview(event) {
         event.preventDefault();
-        webpageSubmission = true
+        webpageSubmission = "true"
 
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.star-rating input[type="radio"]');
     stars.forEach(star => {
         star.addEventListener('click', function () {
-            webpageSubmission = true
+            webpageSubmission = "true"
             const rating = this.id.split('-')[1];
 
             // Prevent double API requests if the initial request was already sent
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach event listeners to CES ratings
     const cesOptions = document.querySelectorAll('.radio-group input[type="radio"]');
     cesOptions.forEach(option => {
-        webpageSubmission = true
+        webpageSubmission = "true";
         option.addEventListener('click', function () {
             const starRatingInput = document.querySelector('input[name="rate"]:checked');
             const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
