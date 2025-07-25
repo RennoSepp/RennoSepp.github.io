@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbyM4vtYv-PdWJPDF-m0tMzPNtZEsDggDK5xCDXb8XLVn4ZMKl5HPSHXw-v1mfnmbOgZ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbypn5wuUN3CFIJ1WnKlu9gFaU58OG-AUjfO5Zh74JAa-2hHcqrY6uj0org9P0FHF-Qv/exec', {
 
             redirect: "follow",
             method: 'POST',
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle the review submission
     function submitReview(event) {
         event.preventDefault();
-        console.info(userAgent)
+        console.log(userAgent)
 
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
