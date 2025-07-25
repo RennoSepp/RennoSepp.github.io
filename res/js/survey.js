@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbyCvWPOYr5-6pFP77am4a5emkXvNmjVgqVQkSOYtU9b8FZF2NAPxAoAxXySgEjzIFBa/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyM4vtYv-PdWJPDF-m0tMzPNtZEsDggDK5xCDXb8XLVn4ZMKl5HPSHXw-v1mfnmbOgZ/exec', {
 
             redirect: "follow",
             method: 'POST',
