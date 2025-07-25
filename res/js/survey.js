@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const userAgent = navigator.userAgent;
     const submitBtn = document.querySelector(".submitBtn button");
     const post = document.querySelector(".post");
     const widget = document.querySelector(".rating-widget");
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
             csatRating: starRating,
             cesRating: cesRating,
             comment: comment,
-            userAgent: navigator.userAgent
+            userAgent: userAgent
         };
 
         // Send data to Google Apps Script
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle the review submission
     function submitReview(event) {
         event.preventDefault();
+        console.info(userAgent)
 
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
