@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var webpageSubmission = "false";
+    var webpageSubmission;
     const userAgent = navigator.userAgent;
     const submitBtn = document.querySelector(".submitBtn button");
     const post = document.querySelector(".post");
