@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const webpageSubmission = "false";
+    var webpageSubmission = "false";
     const userAgent = navigator.userAgent;
     const submitBtn = document.querySelector(".submitBtn button");
     const post = document.querySelector(".post");
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbzrxspBl-AToAxuJsj-g3V7oPCKs3gWUNJ7-KYho4NKjeEhtFjWO-Hfoe6OJrk8Sd6d/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbx7NSfMit90zE03m4Ohetep2GUQwimYNokfPVMuSawqFdmORwKJEozE2ulAGjEhCbaX/exec', {
 
             redirect: "follow",
             method: 'POST',
