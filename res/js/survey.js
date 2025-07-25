@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let initialRequestSent = false; // Flag to prevent double API requests
     let lastSelectedCesRating = null; // To track the last selected CES rating
 
-/*     // Function to get URL parameters
+    // Function to get URL parameters
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
@@ -16,87 +16,37 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to send the combined rating and comment to the API
     function sendCesRating(starRating, cesRating = null, comment = '') {
         const token = getQueryParam('token');
-        const issueKey = getQueryParam('issue-key');
+        const ticketCode = getQueryParam('issue-key');
 
-        if (!token || !issueKey) {
-            console.error("Required parameters are missing.");
+        if (!token || !ticketCode || !starRating) {
             return;
         }
 
-        const data = {
+        const formData = {
             token: token,
-            rating: starRating,
-            comment: cesRating ? `${cesRating}: ${comment}` : comment
+            ticketCode: ticketCode,
+            csatRating: starRating,
+            cesRating: cesRating,
+            comment: comment
         };
 
-        const apiUrl = `https://glia.atlassian.net/rest/servicedesk/1/customer/feedback/portal/4/${issueKey}`;
+        // Send data to Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbyCvWPOYr5-6pFP77am4a5emkXvNmjVgqVQkSOYtU9b8FZF2NAPxAoAxXySgEjzIFBa/exec', {
 
-        fetch(apiUrl, {
+            redirect: "follow",
             method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(formData),  // Convert the form data into a JSON string
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                'Content-Type': 'text/plain;charset=utf-8'
             }
-            return response.json();
         })
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    } */
-
-        // Function to get URL parameters
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-    
-        // Function to send the combined rating and comment to the API
-        function sendCesRating(starRating, cesRating = null, comment = '') {
-            const token = getQueryParam('token');
-            const ticketCode = getQueryParam('issue-key');
-            console.log(token);
-            console.log(ticketCode);
-            console.log(starRating);
-            console.log(cesRating);
-    
-            if (!token || !ticketCode || !starRating) {
-                console.error("Missing required parameters.");
-                return;
-            }
-
-            const formData = {
-                token: token,
-                ticketCode: ticketCode,
-                csatRating: starRating,
-                cesRating: cesRating,
-                comment: comment
-            };
-    
-            // Send data to Google Apps Script
-            fetch('https://script.google.com/macros/s/AKfycbz6GhkMldEHV5mt_PeeShFhsqMBeOiw4rIOdYKkF6D8JiXnESi9wJYlpBDTfTsAnHxI/exec', {  // Replace with your Apps Script URL
-
-                redirect: "follow",
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(formData),  // Convert the form data into a JSON string
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8'  // Tell the server to expect JSON
-                }
-            })
             .then(response => response.text())
             .catch((error) => {
                 console.error('Error:', error);
                 alert('Error: ' + error);  // Show an error message
             });
-        }
+    }
 
     // Function to handle the review submission
     function submitReview(event) {
@@ -114,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
             widget.style.display = "none";
             post.style.display = "block";
         } else {
-            console.log('Please select a star rating.');
         }
     }
 
@@ -200,5 +149,4 @@ document.addEventListener('DOMContentLoaded', function () {
         widget.style.display = "block";
         post.style.display = "none";
     };
-      
 });

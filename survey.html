@@ -1,68 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave a Review</title>
-    <link rel="stylesheet" href="res/css/survey.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-</head>
-
-<body>
+    <link rel="stylesheet" href="res/css/survey.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css"
+    />
+    <link rel="icon" type="image/x-icon" href="res/images/favicon.ico" />
+  </head>
+  <body>
     <a href="https://glia.atlassian.net/servicedesk/customer/portals">
-        <img class="logo-image"
-            src="res/images/glia-logo.png" alt="Glia Logo" width="600" height="400">
+      <img class="logo-image" src="res/images/glia-logo.png" alt="Glia Logo" width="600" height="400" />
     </a>
     <div class="review-container">
-        <div class="post">
-            <div class="text">Feedback submitted.</div>
-            Thank you for your partnership!
-            <div class="change"></div>
+      <div class="post">
+        <div class="text">Feedback submitted.</div>
+        Thank you for your partnership!
+        <div class="change"></div>
+      </div>
+      <div class="rating-widget">
+        <h1 class="main-message">How satisfied are you with our support?</h1>
+        <div class="star-rating">
+          <input type="radio" name="rate" id="rate-1" />
+          <label for="rate-1"><i class="fi fi-sr-face-disappointed"></i></label>
+          <input type="radio" name="rate" id="rate-2" />
+          <label for="rate-2"><i class="fi fi-sr-sad"></i></label>
+          <input type="radio" name="rate" id="rate-3" />
+          <label for="rate-3"><i class="fi fi-sr-meh"></i></label>
+          <input type="radio" name="rate" id="rate-4" />
+          <label for="rate-4" class="fi fi-ss-smile"><i class="fi fi-sr-grin"></i></label>
+          <input type="radio" name="rate" id="rate-5" />
+          <label for="rate-5"><i class="fi fi-sr-grin-stars"></i></label>
         </div>
-        <div class="rating-widget">
-            <h1 class="main-message">Please give us a rating below.</h1>
-            <div class="star-rating">
-                <input type="radio" name="rate" id="rate-5">
-                <label for="rate-5"><i class="fi fi-sr-grin-stars"></i></label>
-                <input type="radio" name="rate" id="rate-4">
-                <label for="rate-4" class="fi fi-ss-smile"><i class="fi fi-sr-grin"></i></i></label>
-                <input type="radio" name="rate" id="rate-3">
-                <label for="rate-3"><i class="fi fi-sr-meh"></i></label>
-                <input type="radio" name="rate" id="rate-2">
-                <label for="rate-2"><i class="fi fi-sr-sad"></i></label>
-                <input type="radio" name="rate" id="rate-1">
-                <label for="rate-1"><i class="fi fi-sr-face-disappointed"></i></label>
-            </div>
-            <div class="definitions">
-                <b class="bad">Very Dissatisfied</b>
-                <b class="good">Very Satisfied</b>
-            </div>
-            <p class="ces-question"><b>How easy did Glia make it for you to handle your issue?</b></p>
-            <div class="radio-group">
-                <input type="radio" id="difficult" name="rating" class="difficult">
-                <label for="difficult">Difficult</label>
-        
-                <input type="radio" id="average" name="rating" class="average">
-                <label for="average">Average</label>
+        <div class="definitions">
+          <b class="bad">Very Dissatisfied</b>
+          <b class="good">Very Satisfied</b>
+        </div>
 
-                <input type="radio" id="easy" name="rating" class="easy">
-                <label for="easy">Easy</label>
-            </div>
-            
-            <p class="description"><b>Any comments?</b></p>
-            <form>
-                <div>
-                    <textarea id="commentText" cols="30" placeholder="Optional comment"></textarea>
-                </div>
-                <div class="submitBtn">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+        <p class="ces-question">
+          <b>Glia made it easy for me to handle my issues</b>
+        </p>
+
+        <div class="radio-group">
+          <input type="radio" id="strong-disagree" name="rating" />
+          <label for="strong-disagree" class="circle-button strong-disagree">1</label>
+
+          <input type="radio" id="disagree" name="rating" />
+          <label for="disagree" class="circle-button disagree">2</label>
+
+          <input type="radio" id="neutral" name="rating" />
+          <label for="neutral" class="circle-button neutral">3</label>
+
+          <input type="radio" id="agree" name="rating" />
+          <label for="agree" class="circle-button agree">4</label>
+
+          <input type="radio" id="strong-agree" name="rating" />
+          <label for="strong-agree" class="circle-button strong-agree">5</label>
         </div>
+
+        <div class="likert-labels">
+          <span>Strongly Disagree</span>
+          <span>Strongly Agree</span>
+        </div>
+        <p class="description">
+          <b>Anything you would like to share about your experience?</b>
+        </p>
+        <form>
+          <div>
+            <textarea id="commentText" cols="30" placeholder="Share your thoughts"></textarea>
+          </div>
+          <div class="submitBtn">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
     <script src="res/js/survey.js"></script>
-</body>
-
+  </body>
 </html>
