@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ticketCode: ticketCode,
             csatRating: starRating,
             cesRating: cesRating,
-            comment: comment
+            comment: comment,
+            userAgent: navigator.userAgent
         };
 
         // Send data to Google Apps Script
