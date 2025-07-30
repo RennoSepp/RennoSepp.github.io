@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to send the combined rating and comment to the API
-    function sendCesRating(starRating, cesRating = null, comment = '') {
+    function sendCesRating(starRating, cesRating = null, comment = '', webpageSubmission = 'false') {
         const token = getQueryParam('token');
         const ticketCode = getQueryParam('issue-key');
 
@@ -55,14 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle the review submission
     function submitReview(event) {
         event.preventDefault();
-        webpageSubmission = "true"
-
+        const webpageSubmission = "true"
         const starRatingInput = document.querySelector('input[name="rate"]:checked');
         const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
         const commentText = document.getElementById('commentText').value;
 
         if (starRating) {
-            sendCesRating(starRating, lastSelectedCesRating, commentText);
+            sendCesRating(starRating, lastSelectedCesRating, commentText, webpageSubmission);
             updateMainMessage(starRating);
 
             // Show the post-feedback message
@@ -122,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 initialRequestSent = true;
             } else {
                 // Include the last selected CES rating in the API request
-                sendCesRating(rating, lastSelectedCesRating);
+                sendCesRating(rating, lastSelectedCesRating, webpageSubmission);
             }
 
             updateMainMessage(rating); // Update the main message
@@ -138,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const starRating = starRatingInput ? starRatingInput.id.split('-')[1] : null;
             lastSelectedCesRating = this.id; // Store the selected CES rating
             if (starRating) {
-                sendCesRating(starRating, lastSelectedCesRating); // Send star and CES rating with no comment
+                sendCesRating(starRating, lastSelectedCesRating, webpageSubmission); // Send star and CES rating with no comment
             } else {
                 console.log('Please select a star rating first.');
             }
