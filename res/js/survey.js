@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to send the combined rating and comment to the API
-    function sendCesRating(starRating, cesRating = null, comment = '', webpageSubmission = 'false') {
+    function sendCesRating(starRating, cesRating = null, webpageSubmission = 'false', comment = '') {
         const token = getQueryParam('token');
         const ticketCode = getQueryParam('issue-key');
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const commentText = document.getElementById('commentText').value;
 
         if (starRating) {
-            sendCesRating(starRating, lastSelectedCesRating, commentText, webpageSubmission);
+            sendCesRating(starRating, lastSelectedCesRating, webpageSubmission, commentText);
             updateMainMessage(starRating);
 
             // Show the post-feedback message
