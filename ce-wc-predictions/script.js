@@ -109,7 +109,7 @@ function buildPlayerTabs() {
     const button = document.createElement("button");
     button.className = "player-tab";
     button.dataset.playerId = `player${i}`;
-    button.textContent = `Loading...`;
+    button.textContent = `⏳ Loading...`;
     button.addEventListener("click", () => selectPlayer(`player${i}`));
     tabs.appendChild(button);
   }
@@ -205,7 +205,11 @@ function renderGames() {
     return `
       <div class="game-card ${locked ? "locked" : ""}">
         <div>
-          <div class="teams">${escapeHtml(game.home)} vs ${escapeHtml(game.away)}</div>
+          <div class="teams">
+  ${FLAGS[game.home] || "🏳️"} ${escapeHtml(game.home)}
+  vs
+  ${FLAGS[game.away] || "🏳️"} ${escapeHtml(game.away)}
+</div>
           <div class="game-meta">${escapeHtml(game.stage || "")} · ${formatDate(kickoff)} · ${escapeHtml(game.venue || "")}</div>
         </div>
 
