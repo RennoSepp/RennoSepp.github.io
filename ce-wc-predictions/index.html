@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Cup Prediction Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>Players</h2>
+      <button id="homeBtn" class="home-btn">Scoreboard Home</button>
+      <div id="playerTabs" class="player-tabs"></div>
+    </aside>
+
+    <main class="main">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">2026 Edition</p>
+          <h1>World Cup Prediction Game</h1>
+          <p class="subtitle">Predict scores before kickoff. Late submissions are blocked by Google Apps Script.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="helpBtn" class="help-btn" aria-label="Scoring system and project info">?</button>
+          <button id="refreshBtn" class="secondary-btn">Refresh</button>
+        </div>
+      </header>
+
+      <section class="scoreboard-card">
+        <div class="section-title">
+          <h2>Scoreboard</h2>
+          <span>Total points</span>
+        </div>
+        <div id="scoreboard" class="scoreboard"></div>
+      </section>
+
+      <section id="playerPanel" class="player-card hidden">
+        <div class="player-header">
+          <div>
+            <p class="eyebrow">Selected player</p>
+            <h2 id="selectedPlayerTitle">Player 1</h2>
+          </div>
+          <button id="historyBtn" class="secondary-btn">History</button>
+        </div>
+
+        <div class="name-row">
+          <input id="playerNameInput" type="text" placeholder="Enter player name" />
+          <button id="saveNameBtn">Save Name</button>
+        </div>
+
+        <div id="historyPanel" class="history-panel hidden"></div>
+
+        <div class="section-title games-title">
+          <h2>Upcoming Games</h2>
+          <span>Predictions lock at kickoff</span>
+        </div>
+        <div id="gamesList" class="games-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="helpModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Scoring System</h2>
+        <button id="closeHelpBtn" class="modal-close" aria-label="Close help modal">×</button>
+      </div>
+
+      <div class="modal-content">
+        <div class="rules-grid">
+          <div class="rule-card">
+            <strong>3 Points</strong>
+            <span>Exact score predicted</span>
+            <p>Example: predicted 2-1, actual result 2-1.</p>
+          </div>
+
+          <div class="rule-card">
+            <strong>2 Points</strong>
+            <span>Correct goal difference</span>
+            <p>Example: predicted 3-1, actual result 2-0.</p>
+          </div>
+
+          <div class="rule-card">
+            <strong>1 Point</strong>
+            <span>Correct winner or draw</span>
+            <p>Example: predicted 2-0, actual result 1-0.</p>
+          </div>
+
+          <div class="rule-card">
+            <strong>0 Points</strong>
+            <span>Incorrect prediction</span>
+            <p>Example: predicted home win, actual result away win.</p>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Prediction Deadline</h3>
+          <p>Predictions are automatically locked when a match starts. Any predictions submitted after kickoff are rejected by the system.</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>About This Project</h3>
+          <p>This World Cup Prediction Game was vibecoded in approximately one hour.</p>
+          <p>While every effort has been made to prevent issues, unexpected bugs, visual glitches, questionable design decisions, or acts of football-related chaos may still occur.</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>Fair Play</h3>
+          <p>This game runs on the honor system.</p>
+          <p>Please only edit your own predictions and respect other participants' entries. For transparency, prediction creates and updates are recorded in an audit log.</p>
+          <p>Accidental edits happen, but intentionally changing someone else's predictions is a guaranteed way to get roasted in the group chat.</p>
+          <p>Be competitive, not chaotic. ⚽</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>Bugs & Emotional Support</h3>
+          <p>For bug reports, feature requests, or emotional support after a bad prediction, email <a href="mailto:renno.sepp@gmail.com">renno.sepp@gmail.com</a>.</p>
+          <p class="small-print">Predictions are final. Complaints about referees, VAR decisions, weather conditions, injuries, cursed brackets, or unexpected football miracles will be respectfully ignored.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
