@@ -37,6 +37,7 @@ body {
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar h2 {
@@ -55,6 +56,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .player-tab {
