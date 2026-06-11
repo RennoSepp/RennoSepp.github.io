@@ -1,6 +1,6 @@
 const CONFIG = {
   // Paste your deployed Google Apps Script Web App URL here.
-  APPS_SCRIPT_URL: "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE",
+  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxhNCKTXDvuxSA2U8b8FN7Ugg0lAboiWM3o8O_dLe0Can_Nn_BhGP12md3ilnvSxzu5/exec",
   PLAYER_SLOTS: 10
 };
 
