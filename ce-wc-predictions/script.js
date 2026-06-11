@@ -68,7 +68,7 @@ async function loadData() {
 function defaultPlayers() {
   return Array.from({ length: CONFIG.PLAYER_SLOTS }, (_, index) => ({
     playerId: `player${index + 1}`,
-    displayName: `Player ${index + 1}`
+    displayName: `Loading...`
   }));
 }
 
@@ -109,7 +109,7 @@ function buildPlayerTabs() {
     const button = document.createElement("button");
     button.className = "player-tab";
     button.dataset.playerId = `player${i}`;
-    button.textContent = `Player ${i}`;
+    button.textContent = `Loading...`;
     button.addEventListener("click", () => selectPlayer(`player${i}`));
     tabs.appendChild(button);
   }
