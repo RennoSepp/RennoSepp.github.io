@@ -205,7 +205,11 @@ function renderGames() {
     return `
       <div class="game-card ${locked ? "locked" : ""}">
         <div>
-          <div class="teams">${escapeHtml(game.home)} vs ${escapeHtml(game.away)}</div>
+          <div class="teams">
+  ${FLAGS[game.home] || "🏳️"} ${escapeHtml(game.home)}
+  vs
+  ${FLAGS[game.away] || "🏳️"} ${escapeHtml(game.away)}
+</div>
           <div class="game-meta">${escapeHtml(game.stage || "")} · ${formatDate(kickoff)} · ${escapeHtml(game.venue || "")}</div>
         </div>
 
