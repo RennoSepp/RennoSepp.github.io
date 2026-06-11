@@ -109,7 +109,7 @@ function buildPlayerTabs() {
     const button = document.createElement("button");
     button.className = "player-tab";
     button.dataset.playerId = `player${i}`;
-    button.textContent = `Player ${i}`;
+    button.textContent = `⏳ Loading...`;
     button.addEventListener("click", () => selectPlayer(`player${i}`));
     tabs.appendChild(button);
   }
