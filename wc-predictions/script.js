@@ -68,7 +68,7 @@ async function loadData() {
 function defaultPlayers() {
   return Array.from({ length: CONFIG.PLAYER_SLOTS }, (_, index) => ({
     playerId: `player${index + 1}`,
-    displayName: `Player ${index + 1}`
+    displayName: `Loading...`
   }));
 }
 
